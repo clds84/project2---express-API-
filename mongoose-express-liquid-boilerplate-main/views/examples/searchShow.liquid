@@ -1,0 +1,24 @@
+{% layout "layout.liquid" %}
+{% block content %}
+
+    <h1>Welcome! Click view memes to see a list of memes!</h1>
+    <form action="/memes/search" method="POST">
+        <input type="number" name="page" placeholder="Enter Page Number">
+        <input type="submit" value="Search">
+    </form>
+    
+        {% for meme in memeData.data %}
+             {% if meme.bottomText != null and meme.topText != null %}
+                {% if meme.bottomText != '' or meme.topText != ''%}  
+                     <div>
+                         {{meme.bottomText}}
+                        <img src="{{meme.image}}">
+                        {{meme.topText}}
+                    </div>    
+                {% endif %}
+             {% endif %}
+             
+        {% endfor %}
+    
+
+{% endblock %}
