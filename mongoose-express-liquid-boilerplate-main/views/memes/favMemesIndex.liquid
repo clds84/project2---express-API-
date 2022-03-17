@@ -1,0 +1,14 @@
+{% layout "layout.liquid" %}
+{% block content %}
+
+    <h1>Welcome! Click view memes to see a list of memes!</h1>
+                    {%for meme in memes %} 
+                    <div>
+                        <a href="">
+                            <img src="{{meme.image}}">
+                        </a>    
+                            {{meme.bottomText}}
+                            {{meme.topText}}
+                    </div>
+                    {% endfor %}
+{% endblock %}

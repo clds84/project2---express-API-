@@ -8,7 +8,11 @@
         <!--<h2 class="display-6">All Fruits</h2>--->
         <div class="row">
             {% for meme in memes %}
+            <a href="">
+                <img src="{{meme.image}}">
+            </a>  
                 <h1>{{meme.topText}}</h1>
+                <h1>{{meme.bottomText}}</h1>
                 <!--<div class="card" style="width: 18rem;">
                     
                     <h5 class="card-header">{{fruit.name}}</h5>

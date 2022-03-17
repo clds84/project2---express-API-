@@ -43,8 +43,8 @@ router.get('/', (req,res) => {
             console.log(error)
             res.json({error})
         })
-    })
-    router.post('/', (req,res) => {
+})
+router.post('/', (req,res) => {
         req.body.owner = req.session.userId
         //  FavMeme.find({owner: userId})
         //  	.then((meme) => {
@@ -71,7 +71,7 @@ router.get('/', (req,res) => {
                 console.log(err)
                 res.json({ err })
             })
-    })
+})
 //////////////
 //index that shows only user's memes
 //////////////
@@ -80,7 +80,7 @@ router.get('/mine', (req,res) => {
     FavMeme.find({owner: userId})
         .then((memes) => {
           
-            res.render('memes/index', {memes, username, loggedIn})
+            res.render('memes/favMemesIndex', {memes, userId, username, loggedIn})
             //res.send('hi')
         })
         .catch((error) => {
