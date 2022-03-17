@@ -14,11 +14,12 @@
                          {{meme.bottomText}}
                         <img src="{{meme.image}}">
                         {{meme.topText}}
+                        <form action="/memes/mine" method="POST">
+                            <input type="submit" value="like">
+                        </form>
                     </div>    
                 {% endif %}
              {% endif %}
              
         {% endfor %}
-    
-
 {% endblock %}
