@@ -10,10 +10,11 @@ const { Schema, model } = mongoose
 
 const favMemeSchema = new Schema(
 	{
-		ID: { type: String, required: false },
+		ID: { type: Number, required: true },
 		bottomText: { type: String, required: false },
-        image: { type: Number, required: true },
-		name: { type: Boolean, required: true },
+		topText: {type: String, required: false},
+        image: { type: String, required: true },
+		name: { type: String, required: true },
 		rank: {type: Number, required: false},
 		tags: {type: String, required: false},
 		owner: {
