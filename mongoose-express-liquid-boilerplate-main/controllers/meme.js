@@ -43,7 +43,35 @@ router.get('/', (req,res) => {
             console.log(error)
             res.json({error})
         })
-})
+    })
+    router.post('/', (req,res) => {
+        req.body.owner = req.session.userId
+        //  FavMeme.find({owner: userId})
+        //  	.then((meme) => {
+                 const username = req.session.username
+                 const loggedIn = req.session.loggedIn
+                 
+                let memeBody = req.body
+                let topText = memeBody.topText
+                // let bottomText = memeBody.bottomText
+                // let image = memeBody.image
+                // let name = memeBody.name
+                let ID = memeBody.ID
+                // let rank = memeBody.rank
+                // let tags = memeBody.tags
+                
+                FavMeme.create(memeBody)
+                .then((memeBody) => {
+                    console.log('this is req body ', memeBody)
+                        res.redirect(`/memes/search/${ID}`)
+                        //res.send('hi')
+                    })
+            //})
+            .catch((err) => {
+                console.log(err)
+                res.json({ err })
+            })
+    })
 //////////////
 //index that shows only user's memes
 //////////////
@@ -63,46 +91,9 @@ router.get('/mine', (req,res) => {
 //////////////
 //post for liking a meme that gets stored under username in /memes/mine
 //////////////
-router.post('/search', (req,res) => {
-    // req.body.owner = req.session.userId
-	// FavMeme.create(req.body)
-	// 	.then((meme) => {
-	// 		console.log('this was returned from hitting like', meme)
-	// 		res.redirect('/memes/search')
-	// 	})
-	// 	.catch((err) => {
-	// 		console.log(err)
-	// 		res.json({ err })
-	// 	})
-    req.body.owner = req.session.userId
-	// FavMeme.find({owner: userId})
-	// 	.then((meme) => {
-    //         const username = req.session.username
-    //         const loggedIn = req.session.loggedIn
-    //         req.body.owner = req.session.userId
-            let memeBody = req.body
-            let topText = memeBody.topText
-            let bottomText = memeBody.bottomText
-            let image = memeBody.image
-            let name = memeBody.name
-            let ID = memeBody.ID
-            let rank = memeBody.rank
-            let tags = memeBody.tags
-            
-	// 		//console.log('this was returned from hitting like', meme)
-	// 		//res.redirect('/memes/search')
-            FavMeme.create(memeBody)
-                .then((memeBody) => {
-                    console.log('this is what has been liked')
-                    res.redirect('/memes/search')
-                    //res.send('hi')
-                })
-		//})
-		.catch((err) => {
-			console.log(err)
-			res.json({ err })
-		})
-})
+
+
+//})
 //////////////
 //
 //////////////

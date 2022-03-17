@@ -14,14 +14,14 @@
                          {{meme.bottomText}}
                         <img src="{{meme.image}}">
                         {{meme.topText}}
-                        <form action="/memes/search" method="POST">
+                        <form action="/memes" method="POST">
                             <input type="hidden" name="bottomText" value={{meme.bottomText}}>
-                            <input type="hidden" name="bottomText" value={{meme.name}}>
-                            <input type="hidden" name="bottomText" value={{meme.ID}}>
+                            <input type="hidden" name="name" value={{meme.name}}>
+                            <input type="hidden" name="ID" value={{meme.ID}}>
                             <input type="hidden" name="topText" value={{meme.topText}}>
                             <input type="hidden" name="image" value={{meme.image}}>
-                            <input type="hidden" name="image" value={{meme.rank}}>
-                            <input type="hidden" name="image" value={{meme.tags}}>
+                            <input type="hidden" name="rank" value={{meme.rank}}>
+                            <input type="hidden" name="tags" value={{meme.tags}}>
                             <input type="submit" value="like">
                         </form>
                     </div>    
