@@ -14,7 +14,7 @@
                          {{meme.bottomText}}
                         <img src="{{meme.image}}">
                         {{meme.topText}}
-                        <form action="/memes" method="POST">
+                        <form action="/memes/viewAll" method="POST">
                             <input type="hidden" name="bottomText" value={{meme.bottomText}}>
                             <input type="hidden" name="name" value={{meme.name}}>
                             <input type="hidden" name="ID" value={{meme.ID}}>

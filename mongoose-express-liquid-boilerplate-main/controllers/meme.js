@@ -1,6 +1,5 @@
 // Import Dependencies
 const express = require('express')
-//const Example = require('../models/example')
 const FavMeme = require('../models/favMeme')
 const fetch = require('node-fetch')
 const { model } = require('../models/connection')
@@ -81,11 +80,11 @@ router.post('/', (req,res) => {
         const loggedIn = req.session.loggedIn
          
         let memeBody = req.body
-        let topText = memeBody.topText
+        //let topText = memeBody.topText
         // let bottomText = memeBody.bottomText
         // let image = memeBody.image
         // let name = memeBody.name
-        let ID = memeBody.ID
+        //let ID = memeBody.ID
         // let rank = memeBody.rank
         // let tags = memeBody.tags
         
@@ -141,11 +140,12 @@ router.get('/mine/:id', (req,res) => {
         //EDIT PUT route - for editing user meme-specficic show route
                 //////////////
                 router.put('/mine/:id', (req,res) => {
+                    const memeBody = req.body
                     const memeId = req.params.id   
-                    FavMeme.findByIdAndUpdate(memeId)
+                    FavMeme.findByIdAndUpdate(memeId, {topText: memeBody.topText, bottomText: memeBody.bottomText})
                     .then((meme) => {
                         const { username, userId, loggedIn } = req.session
-                        res.redirect(`/memes/mine/${memeId}`, {meme, userId, username, loggedIn})
+                        res.redirect(`/memes/mine/${memeId}`)
                     })
                     .catch((error) => {
                         console.log(error)
@@ -169,7 +169,7 @@ router.get('/mine/:id', (req,res) => {
         })
         //POST route for liking a meme that gets stored under username in /memes/mine
         //////////////
-        router.post('/', (req,res) => {
+        router.post('/viewAll', (req,res) => {
             req.body.owner = req.session.userId
             //  FavMeme.find({owner: userId})
             //  	.then((meme) => {
@@ -177,7 +177,7 @@ router.get('/mine/:id', (req,res) => {
                 const loggedIn = req.session.loggedIn
                  
                 let memeBody = req.body
-                let topText = memeBody.topText
+                //let topText = memeBody.topText
                 // let bottomText = memeBody.bottomText
                 // let image = memeBody.image
                 // let name = memeBody.name

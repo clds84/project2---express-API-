@@ -2,8 +2,8 @@
 {% block content %}
 
 <form action="/memes/mine/{{meme.id}}?_method=PUT" method="POST">
-    <input type="text" name="topText" placeholder="{{meme.topText}}">
-    <input type="text" name="bottomText" placeholder="{{meme.bottomText}}">
+    <input type="text" name="topText" value="{{meme.topText}}">
+    <input type="text" name="bottomText" value="{{meme.bottomText}}">
     <input type="submit" value="save">
 </form>
 {% endblock %}

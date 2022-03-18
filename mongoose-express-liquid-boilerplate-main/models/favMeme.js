@@ -1,13 +1,14 @@
 // import dependencies
 const { Mongoose } = require('./connection')
 const mongoose = require('./connection')
+const commentSchema = require('./comment')
 
 // import user model for populate
 const User = require('./user')
 
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
-
+//uniqe : true
 const favMemeSchema = new Schema(
 	{
 		ID: { type: Number, required: false },
@@ -20,10 +21,9 @@ const favMemeSchema = new Schema(
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
-		}
-	},
-	{ timestamps: true }
-)
+		},
+		comments: [commentSchema]
+		}, { timestamps: true })
 
 const FavMeme = model('FavMeme', favMemeSchema)
 

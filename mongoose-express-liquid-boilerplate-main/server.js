@@ -8,6 +8,7 @@ const middleware = require('./utils/middleware')
 //const ExampleRouter = require('./controllers/example')
 const UserRouter = require('./controllers/user')
 const memeRouter = require('./controllers/meme')
+const commentRouter = require('./controllers/comment')
 const User = require("./models/user")
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
@@ -26,12 +27,12 @@ middleware(app)
 
 app.use('/memes', memeRouter)
 app.use('/auth', UserRouter)
+app.use('/comments', commentRouter)
 //app.use('/examples', ExampleRouter)
 
-// app.get('/', (req, res) => {
-//     const { username, userId, loggedIn } = req.session
-	
-// 			res.render('index.liquid', {loggedIn, username, userId })
+ //app.get('/', (req, res) => {
+   //  const { username, userId, loggedIn } = req.session	
+ 	//		res.render('index.liquid', {loggedIn, username, userId })
 	
 // })
 // app.get('/:memePage', (req, res) => {

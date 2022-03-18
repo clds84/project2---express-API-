@@ -3,16 +3,38 @@
 
     <h1></h1>
                     
-                    <div>
-                        <img src="{{memes.image}}">
-                        {{memes.bottomText}}
-                        {{memes.topText}}
+<div>
+    <img src="{{memes.image}}">
+    {{memes.bottomText}}
+    {{memes.topText}}
+</div>
 
-                    </div>
-                    
-                    <a href="/memes/mine/{{memes.id}}/edit"><button>Edit</button></a>
-                    <form action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
-                        <input type="submit" value="delete">
-                    </form>
-                    
+<a href="/memes/mine/{{memes.id}}/edit"><button>Edit</button></a>
+<form action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
+    <input type="submit" value="delete">
+</form>
+     
+
+
+<form action="/comments/{{memes.id}}" method="POST">
+    <fieldset>
+        <legend>Add Comment</legend>
+        <label class="form-label">Comment: </label>
+        <input type="text" class="form-control" name="note" placeholder="enter comment here...">
+    </fieldset>
+    <input type="submit" class="btn btn-success" value="Add Comment">
+</form>
+
+{% if memes.comments.length > 0%}
+
+<div class="container-sm justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+        {% for comment in memes.comments %}
+            {% render '../comment.liquid', comment: comment, userId: userId, memes: memes %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
 {% endblock %}
