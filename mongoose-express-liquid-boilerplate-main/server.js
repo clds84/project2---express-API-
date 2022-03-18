@@ -9,6 +9,7 @@ const middleware = require('./utils/middleware')
 const UserRouter = require('./controllers/user')
 const memeRouter = require('./controllers/meme')
 const User = require("./models/user")
+
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
 

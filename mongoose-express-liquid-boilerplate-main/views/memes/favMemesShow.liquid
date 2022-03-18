@@ -7,6 +7,12 @@
                         <img src="{{memes.image}}">
                         {{memes.bottomText}}
                         {{memes.topText}}
+
                     </div>
+                    
+                    <a href="/memes/mine/{{memes.id}}/edit"><button>Edit</button></a>
+                    <form action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
+                        <input type="submit" value="delete">
+                    </form>
                     
 {% endblock %}

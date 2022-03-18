@@ -4,6 +4,7 @@ const express = require('express')
 const FavMeme = require('../models/favMeme')
 const fetch = require('node-fetch')
 const { model } = require('../models/connection')
+const { route } = require('./user')
 
 
 // Create router
@@ -63,9 +64,9 @@ router.get('/mine', (req,res) => {
 ///////////////
 //SHOW route - page that shows user's specific meme. Will include edit, delete, and comment
 ///////////////
-router.get(`/mine/:id`, (req,res) => {
+router.get('/mine/:id', (req,res) => {
     const memeId = req.params.id
-    req.body.owner = req.session.userId
+    //req.body.owner = req.session.userId
    // let ID = memeBody.ID
    FavMeme.findById(memeId)
    .then((memes) => {
@@ -79,7 +80,42 @@ router.get(`/mine/:id`, (req,res) => {
         res.json({error})
     })
 })
+///////////////
+//DELETE route - for deleting user meme-specific show route
+///////////////
+router.delete('/mine/:id/delete', (req,res) => {
+    const memeId = req.params.id
+    console.log('delete route hit')
+        FavMeme.findByIdAndRemove(memeId)
+            .then((meme) => {
+                console.log('we are inside delete promise chain')
+                const { username, userId, loggedIn } = req.session
+                res.redirect(`/memes/mine`)
+            })
+            .catch((error) => {
+                console.log(error)
+                res.json({error})
+            })
+
+})
+
+///////////////
+//EDIT GET route - for editing user meme-specific show route
+///////////////
+router.get('/mine/:id/edit', (req,res) => {
+    const memeId = req.params.id
+        FavMeme.findById(memeId)
+            .then((meme) => {
+                const { username, userId, loggedIn } = req.session
+                res.render('memes/favMemesEdit', {meme, username, userId, loggedIn})
+            })
+})
 //////////////
+//EDIT PUT route - for editing user meme-specficic show route
+//////////////
+router.post('/mine/:id', (req,res) => {
+
+})
 //POST route for liking a meme that gets stored under username in /memes/mine
 //////////////
 router.post('/', (req,res) => {
