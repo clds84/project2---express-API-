@@ -27,7 +27,7 @@ router.use((req, res, next) => {
 /////////////////////////////
 
 //////////////
-//index that shows all memes
+//GET route- index that shows all memes
 //////////////
 router.get('/', (req,res) => {
     
@@ -44,6 +44,44 @@ router.get('/', (req,res) => {
             res.json({error})
         })
 })
+//////////////
+//GET route - index that shows only user's memes
+//////////////
+router.get('/mine', (req,res) => {
+    const { username, userId, loggedIn } = req.session
+    FavMeme.find({owner: userId})
+    .then((memes) => {
+        
+        res.render('memes/favMemesIndex', {memes, userId, username, loggedIn})
+        //res.send('hi')
+    })
+    .catch((error) => {
+        console.log(error)
+        res.json({error})
+    })
+})
+///////////////
+//SHOW route - page that shows user's specific meme. Will include edit, delete, and comment
+///////////////
+router.get(`/mine/:id`, (req,res) => {
+    const memeId = req.params.id
+    req.body.owner = req.session.userId
+   // let ID = memeBody.ID
+   FavMeme.findById(memeId)
+   .then((memes) => {
+        const { username, userId, loggedIn } = req.session
+        
+        res.render('memes/favMemesShow', {memes, userId, username, loggedIn})
+        //res.send('hi')
+    })
+    .catch((error) => {
+        console.log(error)
+        res.json({error})
+    })
+})
+//////////////
+//POST route for liking a meme that gets stored under username in /memes/mine
+//////////////
 router.post('/', (req,res) => {
         req.body.owner = req.session.userId
         //  FavMeme.find({owner: userId})
@@ -72,28 +110,8 @@ router.post('/', (req,res) => {
                 res.json({ err })
             })
 })
-//////////////
-//index that shows only user's memes
-//////////////
-router.get('/mine', (req,res) => {
-    const { username, userId, loggedIn } = req.session
-    FavMeme.find({owner: userId})
-        .then((memes) => {
-          
-            res.render('memes/favMemesIndex', {memes, userId, username, loggedIn})
-            //res.send('hi')
-        })
-        .catch((error) => {
-            console.log(error)
-            res.json({error})
-        })
-})
-//////////////
-//post for liking a meme that gets stored under username in /memes/mine
-//////////////
 
-
-//})
+//
 //////////////
 //
 //////////////
@@ -110,7 +128,9 @@ router.get('/search', (req, res) => {
     res.render('memes/search', {loggedIn, username, userId })
            
 })
-       
+////////////////
+//post route for page-specific path in show route below
+////////////////    
 router.post('/search', (req, res) => {
     console.log('this is my post: /memes/${page}')
     const page = req.body.page
@@ -118,7 +138,6 @@ router.post('/search', (req, res) => {
     res.redirect(`/memes/search/${page}`)  
 
  })
-
  ////////////////
  //show route - get route that takes us to specific meme page 
  ///////////////
