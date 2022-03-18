@@ -97,7 +97,19 @@ router.delete('/mine/:id/delete', (req,res) => {
                 res.json({error})
             })
 
-})
+        })
+        //////////////
+        //EDIT PUT route - for editing user meme-specficic show route
+        //////////////
+        router.put('/mine/:id', (req,res) => {
+            const memeId = req.params.id   
+                FavMeme.findByIdAndUpdate(memeId)
+                    .then((meme) => {
+                        const { username, userId, loggedIn } = req.session
+                        res.redirect(`/memes/mine/${memeId}`)
+                    })
+        
+        })
 
 ///////////////
 //EDIT GET route - for editing user meme-specific show route
@@ -109,12 +121,6 @@ router.get('/mine/:id/edit', (req,res) => {
                 const { username, userId, loggedIn } = req.session
                 res.render('memes/favMemesEdit', {meme, username, userId, loggedIn})
             })
-})
-//////////////
-//EDIT PUT route - for editing user meme-specficic show route
-//////////////
-router.post('/mine/:id', (req,res) => {
-
 })
 //POST route for liking a meme that gets stored under username in /memes/mine
 //////////////
