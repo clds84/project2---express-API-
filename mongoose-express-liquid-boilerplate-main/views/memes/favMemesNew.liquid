@@ -1,0 +1,13 @@
+{% layout "layout.liquid" %}
+{% block content %}
+<form action="/memes" method="POST">
+    <input type="text" name="bottomText" placeholder="bottom text">
+    <input type="text" name="topText" placeholder="top text">
+    <input type="text" name="image" placeholder="paste url link, ex: 'https://imgflip.com/s/meme/Success-Kid.jpg'">
+    <!--<input type="text" name="name" value={{meme.name}}>
+    <input type="hidden" name="ID" value={{meme.ID}}>
+    <input type="hidden" name="rank" value={{meme.rank}}>
+    <input type="hidden" name="tags" value={{meme.tags}}>-->
+    <input type="submit" value="Create">
+</form>
+{% endblock %}

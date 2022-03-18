@@ -61,7 +61,46 @@ router.get('/mine', (req,res) => {
         res.json({error})
     })
 })
+
+
 ///////////////
+//GET route - new route for creating memes
+///////////////
+router.get('/new', (req,res) => {
+    const { username, userId, loggedIn } = req.session
+    res.render('memes/favMemesNew', {username, userId, loggedIn})
+})
+///////////////
+//POST route - POST route for creating memes in /memes
+///////////////
+router.post('/', (req,res) => {
+    req.body.owner = req.session.userId
+    //  FavMeme.find({owner: userId})
+    //  	.then((meme) => {
+        const username = req.session.username
+        const loggedIn = req.session.loggedIn
+         
+        let memeBody = req.body
+        let topText = memeBody.topText
+        // let bottomText = memeBody.bottomText
+        // let image = memeBody.image
+        // let name = memeBody.name
+        let ID = memeBody.ID
+        // let rank = memeBody.rank
+        // let tags = memeBody.tags
+        
+        FavMeme.create(memeBody)
+        .then((memeBody) => {
+            console.log('this is req body ', memeBody)
+                res.redirect('/memes')
+                //res.send('hi')
+            })
+    //})
+    .catch((err) => {
+        console.log(err)
+        res.json({ err })
+    })
+})
 //SHOW route - page that shows user's specific meme. Will include edit, delete, and comment
 ///////////////
 router.get('/mine/:id', (req,res) => {
@@ -83,53 +122,59 @@ router.get('/mine/:id', (req,res) => {
 ///////////////
 //DELETE route - for deleting user meme-specific show route
 ///////////////
-router.delete('/mine/:id/delete', (req,res) => {
-    const memeId = req.params.id
-    console.log('delete route hit')
-        FavMeme.findByIdAndRemove(memeId)
+
+
+
+
+///////////////
+//EDIT GET route - for editing user meme-specific show route
+        ///////////////
+        router.get('/mine/:id/edit', (req,res) => {
+            const memeId = req.params.id
+            FavMeme.findById(memeId)
+            .then((meme) => {
+                const { username, userId, loggedIn } = req.session
+                res.render('memes/favMemesEdit', {meme, username, userId, loggedIn})
+            })
+        })
+        //////////////
+        //EDIT PUT route - for editing user meme-specficic show route
+                //////////////
+                router.put('/mine/:id', (req,res) => {
+                    const memeId = req.params.id   
+                    FavMeme.findByIdAndUpdate(memeId)
+                    .then((meme) => {
+                        const { username, userId, loggedIn } = req.session
+                        res.redirect(`/memes/mine/${memeId}`, {meme, userId, username, loggedIn})
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        res.json({error})
+                        res.send('hi')
+                    })
+                })
+        router.delete('/mine/:id/delete', (req,res) => {
+            const memeId = req.params.id
+            console.log('delete route hit')
+            FavMeme.findByIdAndRemove(memeId)
             .then((meme) => {
                 console.log('we are inside delete promise chain')
                 const { username, userId, loggedIn } = req.session
                 res.redirect(`/memes/mine`)
             })
-            .catch((error) => {
-                console.log(error)
-                res.json({error})
-            })
-
-        })
-        //////////////
-        //EDIT PUT route - for editing user meme-specficic show route
-        //////////////
-        router.put('/mine/:id', (req,res) => {
-            const memeId = req.params.id   
-                FavMeme.findByIdAndUpdate(memeId)
-                    .then((meme) => {
-                        const { username, userId, loggedIn } = req.session
-                        res.redirect(`/memes/mine/${memeId}`)
+                    .catch((error) => {
+                        console.log(error)
+                        res.json({error})
                     })
-        
         })
-
-///////////////
-//EDIT GET route - for editing user meme-specific show route
-///////////////
-router.get('/mine/:id/edit', (req,res) => {
-    const memeId = req.params.id
-        FavMeme.findById(memeId)
-            .then((meme) => {
-                const { username, userId, loggedIn } = req.session
-                res.render('memes/favMemesEdit', {meme, username, userId, loggedIn})
-            })
-})
-//POST route for liking a meme that gets stored under username in /memes/mine
-//////////////
-router.post('/', (req,res) => {
-        req.body.owner = req.session.userId
-        //  FavMeme.find({owner: userId})
-        //  	.then((meme) => {
-                 const username = req.session.username
-                 const loggedIn = req.session.loggedIn
+        //POST route for liking a meme that gets stored under username in /memes/mine
+        //////////////
+        router.post('/', (req,res) => {
+            req.body.owner = req.session.userId
+            //  FavMeme.find({owner: userId})
+            //  	.then((meme) => {
+                const username = req.session.username
+                const loggedIn = req.session.loggedIn
                  
                 let memeBody = req.body
                 let topText = memeBody.topText
