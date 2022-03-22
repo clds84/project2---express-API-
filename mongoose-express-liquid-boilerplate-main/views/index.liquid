@@ -1,11 +1,8 @@
 {% layout "layout.liquid" %}
 {% block content %}
-
-    <h1>Welcome! choose a page and click search to see a list of memes! Sign in to save and comment! </h1>
-    <form action="/" method="POST">
-        <input type="number" name="page" placeholder="Enter Page Number">
-        <input type="submit" value="Search">
-    </form>
-    
-
+<body class="body">
+    <div class="message-seachInput-container">
+        <h1 class="message">Welcome! Search memes for inspiration or create your own!</h1>
+    </div>
+</body>
 {% endblock %}

@@ -1,17 +1,15 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-
-<div class="container-sm">
-    <form action="/auth/signup" method="POST">
-        <fieldset>
-            <legend>Sign Up Here!</legend>
+<body class="body">
+<div class="container-login-signup">
+    <form class="meme-login-signup-submit-form" action="/auth/signup" method="POST">
+            <legend class="message">Sign Up Here!</legend>
             <label class="form-label">Username: </label>
-            <input type="text" name="username" placeholder="username" class="form-control" required>
-            <label class="form-label">Password</label>
-            <input type="password" name="password" placeholder="enter password" class="form-control" required>
-        </fieldset>
-        <input type="submit" value="Create Account" class="btn btn-success">
+            <input class="meme-input" id="meme-input-login-signup" type="text" name="username" placeholder="username" class="form-control" required></br>
+            <label class="form-label">Password:</label>
+            <input class="meme-input" id="meme-input-login-signup" type="password" name="password" placeholder="enter password" class="form-control" required>
+        <input class="meme-login-signup-submit" type="submit" value="Create Account" class="btn btn-success">
     </form>
 </div>
-
+</body>
 {% endblock %}

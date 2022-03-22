@@ -30,11 +30,11 @@ app.use('/auth', UserRouter)
 app.use('/comments', commentRouter)
 //app.use('/examples', ExampleRouter)
 
- //app.get('/', (req, res) => {
-   //  const { username, userId, loggedIn } = req.session	
- 	//		res.render('index.liquid', {loggedIn, username, userId })
+ app.get('/', (req, res) => {
+    const { username, userId, loggedIn } = req.session	
+ 			res.render('index.liquid', {loggedIn, username, userId })
 	
-// })
+})
 // app.get('/:memePage', (req, res) => {
 // 	const { username, userId, loggedIn } = req.session
 // 	const page = parseInt(req.params.memePage)

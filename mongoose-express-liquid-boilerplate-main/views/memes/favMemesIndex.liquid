@@ -1,14 +1,17 @@
 {% layout "layout.liquid" %}
 {% block content %}
-
-    <h1>Welcome! Click view memes to see a list of memes!</h1>
-                    {%for meme in memes %} 
-                    <div>
-                        <a href="/memes/mine/{{meme.id}}">
-                            <img src="{{meme.image}}">
-                        </a>    
-                            {{meme.bottomText}}
-                            {{meme.topText}}
-                    </div>
-                    {% endfor %}
-{% endblock %}
+<head>
+    <style></style>
+</head>
+<body class="body">
+    <h1 class="message">Click on your saved memes to edit or comment!</h1>
+    <div class="info-container">
+        {%for meme in memes %} 
+            <a href="/memes/mine/{{meme.id}}"> <div class="meme-container"><img class="img" src="{{meme.image}}"></a> 
+                <p class="topText">{{meme.topText}}</p>
+                <p class="bottomText">{{meme.bottomText}}</p>
+            </div>
+         {% endfor %}
+    </div>
+</body>
+    {% endblock %}

@@ -4,35 +4,18 @@
 {% layout 'layout.liquid'%}
 <!-- here we start our block content -->
 {% block content %}
-    <div >
-        <!--<h2 class="display-6">All Fruits</h2>--->
-        <div class="row">
+<body class="body">
+<div class="info-container">
             {% for meme in memes %}
-            <a href="">
-                <img src="{{meme.image}}">
+            <a href="/memes/mine/{{meme.id}}">
+                <div class="meme-container">
+                    <img class="img" src="{{meme.image}}">
             </a>  
-                <h1>{{meme.topText}}</h1>
-                <h1>{{meme.bottomText}}</h1>
-                <!--<div class="card" style="width: 18rem;">
-                    
-                    <h5 class="card-header">{{fruit.name}}</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {% if fruit.readyToEat %}
-                                Ripe
-                            {% else %}
-                                Not Ripe
-                            {% endif %}
-                        </h5>
-                        <p class="card-text"> 
-                            The color of this {{fruit.name}} is {{ fruit.color }}
-                        </p>
-                        <a href="/fruits/{{ fruit.id }}" class="btn btn-info">
-                            View {{ fruit.name }}
-                        </a>
-                    </div>
-                </div>--->
+                <p class="topText">{{meme.topText}}</p>
+                <p class="bottomText">{{meme.bottomText}}</p>
+            </div>
             {% endfor %}
         </div>
-    </div>
+    </body>
+</div>
 {% endblock %}

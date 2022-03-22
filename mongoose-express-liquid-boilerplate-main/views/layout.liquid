@@ -12,7 +12,304 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="/styles.css">
     <script src="/app.js" defer></script>
-
+<style>
+    .body {
+        
+        height:4000px;
+background-color: rgb(0, 0, 0, .82);
+    }
+    .message-searchInput-container {
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        text-align:center;
+        height:1000px;
+        margin:30px auto;
+    }
+    .message{
+        text-align:center;
+        color:white;
+        margin:30px;
+    }
+    .info-container {
+        display:flex;
+        flex-direction:column;
+        flex-wrap:wrap;
+        align-content:center;
+        justify-content:flex-start;
+        text-align:center;
+        
+    }
+    .meme-container {
+        position:relative;
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        margin:60px;
+        width:400px;
+    }
+    .img {
+        align-self:center;
+        display:flex;
+        justify-content:space-between;
+        border-radius:18px;
+        height:auto;
+        width:500px;
+    }
+    .absolute {
+        
+    }
+    .topText { 
+        position:absolute;
+        top:0;
+        width:500px;
+        height:100px;
+        align-items:flex-start;
+        color: white;
+	    font-size: 40px;
+        text-shadow: -1px 1px 4px #000,
+	    		  2px 2px 4px #000,
+	    		  2px -2px 2px #000,
+	    		  -1px -1px 2px #000; }
+    .bottomText {
+        position:absolute;
+        bottom:0;
+        right:50;
+        text-align:center;
+        color: white;
+	    font-size: 40px;
+	    text-shadow: 1px 1px 4px #000,
+	    			  2px 2px 4px #000,
+	    			  2px -2px 2px #000,
+	    			  -1px -1px 2px #000; }
+    .like {
+        
+        color:white;
+        font-size:20px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px whitesmoke;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    .like:hover {
+        color: rgb(0,0,0,.82);
+        font-size:20px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    .create-meme {
+        display:flex;
+        height:300px;
+    }
+    .create-meme-form {
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        margin:30px;
+        color:white;
+        
+        
+    }
+    .meme-input, .meme-input-pageSearch, #meme-input-comment {
+        width: 700px;
+        background-color:transparent;
+        border:none;
+        border-bottom:1px solid white;
+        outline: none;
+        color:white;
+    }
+    #meme-input-topText-edit, #meme-input-bottomText-edit {
+        width:400px;
+        margin:20px;
+        color:white;
+    }
+    .meme-input-pageSearch {
+        width:100px;
+        
+    }
+    .meme-search-form {
+        display:flex;
+        flex-direction:column;    
+        align-content:center;
+        margin-left:500px;
+        
+    }
+     .meme-input:focus {
+        background-color:transparent;
+        outline-width: 0
+    }
+    #meme-input-submit {
+        width:70px;
+        height:35px;
+        color:white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px whitesmoke;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        margin:10px;
+    }
+    #meme-input-submit:hover {
+        width:70px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    #meme-input-submit-edit {
+        width:70px;
+        height:35px;
+        color:white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px whitesmoke;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        
+    }
+    #meme-input-submit-edit:hover {
+        width:70px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+       
+    }
+    #meme-input-submit-delete {
+        width:70px;
+        height:35px;
+        color: white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        margin:20px;
+       
+    }
+    #meme-input-submit-delete:hover {
+        width:70px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    #meme-input-submit-comment {
+        width:130px;
+        height:35px;
+        color: white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        margin:20px;
+       
+    }
+    #meme-input-submit-comment:hover {
+        width:130px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    .meme-show-container {
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:space-around;
+    }
+    .meme-edit-container {
+        margin:20px;
+        height:2000px;
+    }
+    .meme-edit-form {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin:30px;
+    }
+    .meme-comment-form {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin:30px;
+    }
+    .comment-container {
+        display:flex;
+        flex-direction:column;
+    }
+    .card, .mb-4, .shadow{
+        background:transparent;
+        border: 1px solid white;
+    }
+    .card-body {
+        color:white;
+    }
+    .form-label {
+        color:white;
+    }
+    .container-login-signup {
+    
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        justify-content:space-between;
+        margin:20px;
+        align-items:center;
+    }
+    .meme-login-signup-submit-form {
+        display:flex;
+        flex-direction:column;
+        width:400px;
+        line-height:30px;
+    }
+    .meme-login-signup-submit {
+        width:140px;
+        height:35px;
+        color: white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        margin-top:20px;
+       
+    }
+    .meme-login-signup-submit:hover {
+        width:140px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    #meme-input-login-signup {
+        width:400px;
+    }
+    #welcome-back-message {
+        
+    }
+    ::placeholder {
+        color:white;
+    }
+</style>
 </head>
 
 <body>
