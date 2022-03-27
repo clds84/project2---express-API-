@@ -1,6 +1,6 @@
 // Import Dependencies
 const express = require('express')
-const FavMeme = require('../models/favMeme')
+const Meme = require('../models/Meme')
 const fetch = require('node-fetch')
 const { model } = require('../models/connection')
 const { route } = require('./user')
@@ -32,7 +32,7 @@ router.use((req, res, next) => {
 router.get('/', (req,res) => {
     
    
-    FavMeme.find({})    
+    Meme.find({})    
         .then((memes) => {
             const username = req.session.username
             const loggedIn = req.session.loggedIn
@@ -49,10 +49,10 @@ router.get('/', (req,res) => {
 //////////////
 router.get('/mine', (req,res) => {
     const { username, userId, loggedIn } = req.session
-    FavMeme.find({owner: userId})
+    Meme.find({owner: userId})
     .then((memes) => {
         
-        res.render('memes/favMemesIndex', {memes, userId, username, loggedIn})
+        res.render('memes/MemesIndex', {memes, userId, username, loggedIn})
         //res.send('hi')
     })
     .catch((error) => {
@@ -68,11 +68,11 @@ router.get('/mine/:id', (req,res) => {
     const memeId = req.params.id
     //req.body.owner = req.session.userId
    // let ID = memeBody.ID
-   FavMeme.findById(memeId)
+   Meme.findById(memeId)
    .then((memes) => {
         const { username, userId, loggedIn } = req.session
         
-        res.render('memes/favMemesShow', {memes, userId, username, loggedIn})
+        res.render('memes/MemesShow', {memes, userId, username, loggedIn})
         //res.send('hi')
     })
     .catch((error) => {
@@ -85,10 +85,10 @@ router.get('/mine/:id', (req,res) => {
         ///////////////
 router.get('/mine/:id/edit', (req,res) => {
     const memeId = req.params.id
-    FavMeme.findById(memeId)
+    Meme.findById(memeId)
     .then((meme) => {
         const { username, userId, loggedIn } = req.session
-        res.render('memes/favMemesEdit', {meme, username, userId, loggedIn})
+        res.render('memes/MemesEdit', {meme, username, userId, loggedIn})
     })
 })
 //////////////
@@ -97,7 +97,7 @@ router.get('/mine/:id/edit', (req,res) => {
 router.put('/mine/:id', (req,res) => {
     const memeBody = req.body
     const memeId = req.params.id   
-    FavMeme.findByIdAndUpdate(memeId, {topText: memeBody.topText, bottomText: memeBody.bottomText})
+    Meme.findByIdAndUpdate(memeId, {topText: memeBody.topText, bottomText: memeBody.bottomText})
     .then((meme) => {
         const { username, userId, loggedIn } = req.session
         res.redirect(`/memes/mine/${memeId}`)
@@ -113,14 +113,14 @@ router.put('/mine/:id', (req,res) => {
 ///////////////
 router.get('/new', (req,res) => {
     const { username, userId, loggedIn } = req.session
-    res.render('memes/favMemesNew', {username, userId, loggedIn})
+    res.render('memes/MemesNew', {username, userId, loggedIn})
 })
 ///////////////
 //POST route - POST route for creating memes in /memes
 ///////////////
 router.post('/', (req,res) => {
     req.body.owner = req.session.userId
-    //  FavMeme.find({owner: userId})
+    //  Memes.find({owner: userId})
     //  	.then((meme) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
@@ -134,7 +134,7 @@ router.post('/', (req,res) => {
         // let rank = memeBody.rank
         // let tags = memeBody.tags
         
-        FavMeme.create(memeBody)
+        Meme.create(memeBody)
         .then((memeBody) => {
             console.log('this is req body ', memeBody)
                 res.redirect('/memes')
@@ -152,7 +152,7 @@ router.post('/', (req,res) => {
 router.delete('/mine/:id/delete', (req,res) => {
     const memeId = req.params.id
     console.log('delete route hit')
-    FavMeme.findByIdAndRemove(memeId)
+    Meme.findByIdAndRemove(memeId)
     .then((meme) => {
         console.log('we are inside delete promise chain')
         const { username, userId, loggedIn } = req.session
@@ -167,7 +167,7 @@ router.delete('/mine/:id/delete', (req,res) => {
 //////////////
 router.post('/viewAll', (req,res) => {
     req.body.owner = req.session.userId
-    //  FavMeme.find({owner: userId})
+    //  Meme.find({owner: userId})
     //  	.then((meme) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
@@ -181,7 +181,7 @@ router.post('/viewAll', (req,res) => {
         // let rank = memeBody.rank
         // let tags = memeBody.tags
         
-        FavMeme.create(memeBody)
+        Meme.create(memeBody)
         .then((memeBody) => {
             console.log('this is req body ', memeBody)
                //res.redirect(`/memes/search/${ID}`)
@@ -194,48 +194,6 @@ router.post('/viewAll', (req,res) => {
     })
 })
 
-
-//////////////
-//
-//////////////
-
-router.get('/search', (req, res) => {
-    console.log('this is my get route: memes/search ')
-    const { username, userId, loggedIn } = req.session
-       //res.send('hi')
-    res.render('memes/search', {loggedIn, username, userId })
-           
-})
-////////////////
-//post route for page-specific path in show route below
-////////////////    
-router.post('/search', (req, res) => {
-    console.log('this is my post: /memes/${page}')
-    const page = req.body.page
-    console.log('this is the page ', page)
-    res.redirect(`/memes/search/${page}`)  
-
- })
- ////////////////
- //show route - get route that takes us to specific meme page 
- ///////////////
-router.get('/search/:memePage', (req, res) => {
-    console.log('this is my get: memes/searchShow')
-    const { username, userId, loggedIn } = req.session
-    const page = parseInt(req.params.memePage)
-    const requestURL = `http://alpha-meme-maker.herokuapp.com/${page}`
-     fetch(requestURL)
-        .then(responseData => {
-            return responseData.json()
-        })
-        .then(jsonMemeData => {
-            console.log(jsonMemeData)
-            res.render('memes/searchShow', {memeData: jsonMemeData, loggedIn, username, userId} )
-        })
-        .catch(error => {
-            res.send(error)
-        })
-})
 /////////////
 // Export the Router
 ////////////

@@ -7,12 +7,15 @@
             <p class="topText">{{memes.topText}}</p>
             <p class="bottomText">{{memes.bottomText}}</p>
         </div>
+        {% if memes.owner == userId %}
             <form cstyle="display: inline" action="/memes/mine/{{memes.id}}/edit" method="get">
                 <button id="meme-input-submit-edit" >Edit</button>
             </form>
             <form class="meme-input-submits" action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
                 <input id="meme-input-submit-delete" type="submit" value="Delete">
             </form>
+            {% endif %}
+
             <form class="meme-comment-form" action="/comments/{{memes.id}}" method="POST">
             <fieldset>
                 <input id="meme-input-comment" type="text"  name="note" placeholder="enter comment here...">

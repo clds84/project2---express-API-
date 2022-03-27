@@ -9,9 +9,9 @@ const User = require('./user')
 // destructure the schema and model constructors from mongoose
 const { Schema, model } = mongoose
 //uniqe : true
-const favMemeSchema = new Schema(
+const MemeSchema = new Schema(
 	{
-		ID: { type: Number, required: false },
+		//id: { type: Number, required: false },
 		bottomText: { type: String, required: false },
 		topText: {type: String, required: false},
         image: { type: String, required: false },
@@ -25,12 +25,12 @@ const favMemeSchema = new Schema(
 		comments: [commentSchema]
 		}, { timestamps: true })
 
-const FavMeme = model('FavMeme', favMemeSchema)
+const Meme = model('Meme', MemeSchema)
 
 /////////////////////////////////
 // Export our Model
 /////////////////////////////////
-module.exports = FavMeme
+module.exports = Meme
 
 
 // //comment: {
