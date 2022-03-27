@@ -31,7 +31,7 @@ router.use((req, res, next) => {
 //////////////
 router.get('/', (req,res) => {
     
-    //find all liked memes
+   
     FavMeme.find({})    
         .then((memes) => {
             const username = req.session.username
@@ -184,7 +184,7 @@ router.post('/viewAll', (req,res) => {
         FavMeme.create(memeBody)
         .then((memeBody) => {
             console.log('this is req body ', memeBody)
-               // res.redirect(`/memes/search/${ID}`)
+               //res.redirect(`/memes/search/${ID}`)
                 //res.send('hi')
             })
     //})
