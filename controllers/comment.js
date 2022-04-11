@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const FavMeme = require('../models/favMeme')
+const Meme = require('../models/Meme')
 
 
 const router = express.Router()
@@ -18,7 +18,7 @@ router.post('/:id', (req, res) => {
     req.body.author = req.session.userId
     console.log('updated comment body', req.body)
     // we'll find the fruit with the fruitId
-    FavMeme.findById(memeId)
+    Meme.findById(memeId)
         .then(meme => {
             // then we'll send req.body to the comments array
             meme.comments.push(req.body)

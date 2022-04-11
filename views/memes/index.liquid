@@ -1,21 +1,22 @@
-
 <!-- we're serving block content in layout.liquid -->
 <!-- so we need to inform all our blocks(files) -->
 {% layout 'layout.liquid'%}
 <!-- here we start our block content -->
 {% block content %}
 <body class="body">
-<div class="info-container">
-            {% for meme in memes %}
+    <div class="info-container">
+        <h1 class="message">View all memes here including ones you've created!</h1>
+        <h1 class="message">You can click on any meme to comment and additionally you can edit or delete yours!</h1>
+        {% for meme in memes %}
+        <div class="meme-container">
             <a href="/memes/mine/{{meme.id}}">
-                <div class="meme-container">
                     <img class="img" src="{{meme.image}}">
-            </a>  
-                <p class="topText">{{meme.topText}}</p>
-                <p class="bottomText">{{meme.bottomText}}</p>
+                    <p class="topText">{{meme.topText}}</p>
+                    <p class="bottomText">{{meme.bottomText}}</p>
+                </a>  
             </div>
-            {% endfor %}
-        </div>
-    </body>
-</div>
+        {% endfor %}
+    </div>
+</body>
+
 {% endblock %}

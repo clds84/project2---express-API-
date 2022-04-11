@@ -4,7 +4,9 @@
     <style></style>
 </head>
 <body class="body">
-    <h1 class="message">Click on your saved memes to edit or comment!</h1>
+    <h1 class="message">Click on a meme to edit, delete or comment!<br/>
+        If you don't see any, start creating!
+    </h1>
     <div class="info-container">
         {%for meme in memes %} 
             <a href="/memes/mine/{{meme.id}}"> <div class="meme-container"><img class="img" src="{{meme.image}}"></a> 

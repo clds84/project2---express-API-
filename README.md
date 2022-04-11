@@ -1,38 +1,101 @@
-## Project 2 - Meme-Generator - A low stakes opportunity to be funny or a complete twat
+## Project 2 - Meme-Generator - 
+---
+##### My second project is a full stack application created mostly with Mongoose, Express, Liquid, and Javacsript, An API was originally consumed but it crashed and I had to seed data as a result
+---
+### Description
+---
+##### Welcome! Meme-Generator is a fun app for creating memes! Have you ever generated memes on a site and found it unfortunate that they're uneditable or can't be saved? Meme-Generator is a great way to do that! I hope you enjoy the opportunity to make memes and have a collection of what you've done as well as view and comment the work of others!
+---
+### Installation:
+---
+##### 1. Fork and clone the repository
+##### 2. Navigage into the directory
+##### 3. Run npm install or npm i to install dependencies
+##### 4. Touch .gitignore and run echo node_modules > .gitignore
+##### 5. Touch .env and run the same echo command for the .env file
+##### 6. The url is the following: 'https://localhost:3000'
+---
+### User Experience
+---
+##### The order below is an example of how to make use of the app:
+
+##### 1.Sign up for an account and sign in
+##### 2. View all memes that have been seeded for some inspiration. Try commenting as well!
+##### 3. Try creating a meme by clicking on Create Meme and entering a value for the top text and bottom text as well as a link for the image. 
+##### 4. Once created, you're redirected to your created memes page. This page can be accessed by clicking on My Memes or Hello (user)
+##### 5. Click Log Out to log out and sign up/sign in again.
+##### 6. Enjoy!
+---
+<table>
+  <tr>
+    <th>Verb</th>
+    <th>Path</th>
+    <th>Action</th>
+    <th>Description</th>
+    <th>Model</th>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/memes</td>
+    <td>Index</td>
+    <td>Index of all memes</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/memes/mine</td>
+    <td>Index</td>
+    <td>Index of user memes</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/memes/mine/:id</td>
+    <td>Show</td>
+    <td>Show of one specific user meme</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/memes/mine/:id/edit</td>
+    <td>Edit</td>
+    <td>Edit route for one meme's image, top and bottom text</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>GET</td>
+    <td>/memes/new</td>
+    <td>Create</td>
+    <td>Create one meme's image, top and bottom text</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>PUT</td>
+    <td>/memes/mine/:id<td>
+    <td>Edit</td>
+    <td>Edit put route for one meme's image, top and bottom text</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>POST</td>
+    <td>/memes</td>
+    <td>Create</td>
+    <td>Create post route for one meme's image, top and bottom text</td>
+    <td>Meme</td>
+  </tr>
+  <tr>
+    <td>DELETE</td>
+    <td>/memes/mine/:id/delete</td>
+    <td>Delete</td>
+    <td>Delete route for one meme</td>
+    <td>Meme</td>
+  </tr>
+</table>
 
 ---
 
-### Concept: 
-    
-##### The user experience will involve navigating an app that allows you to search for APIs for inspiration, create your own, browse those made and like and comment
-
----
-###### Navigation without an account:
-- ###### Without an account, the user will be able to search for memes via a meme API, view memes that have been created on the app and their comments and ranking. A non-authenticated user will have a chance to like but will need an account to leave comments.
-
-###### Navigation with an account
-- ###### With an account, the authenticated user will also be able to create memes via a model that reflects similar schema properties as the meme API, for consistency. Those memes will be saved to their account and will be accessible to others for commenting or ranking(via likes). 
-
-- ###### The authenticated user will be able to like and comment. 
-
-- ###### The authenticated user will be able to access a page for creating memes
-
-- ###### The authenticated user will be able to acess a page full of photos that they can use to create a meme. The show page of each photo will have a url link that can be used to the create meme page.
-
----
-###### Stretch goals:
-- ###### The ranking system that can organize memes by the amount of likes
-- ###### a url copy clipboard to make the user's life easier when creating a meme
----
-
-###### tools:
-
-- ###### HTML
-- ###### CSS
-- ###### Javascript
-- ###### API (https://mememaker.github.io/API/)
-- ###### Express
-- ###### MongoDb
-
+### WireFrames:
 ![project 2 wireframe](project2wireframe.png)
+---
+### ERD:
 ![alt text](erd.png)

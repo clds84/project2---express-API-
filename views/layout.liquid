@@ -15,6 +15,7 @@
 
 </head>
 <style>
+   
         .body {
         
         height:4000px;
@@ -28,31 +29,28 @@ background-color: rgb(0, 0, 0, .82);
         height:1000px;
         margin:30px auto;
     }
+    .info-container {
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        text-align:center;
+    }
+    .meme-container {
+        display:flex;
+        flex-direction:column;
+        align-content:center;
+        align-self:center;
+        position:relative;
+        margin:60px;
+    }
     .message{
         text-align:center;
         color:white;
         margin:30px;
     }
-    .info-container {
-        display:flex;
-        flex-direction:column;
-        flex-wrap:wrap;
-        align-content:center;
-        justify-content:flex-start;
-        text-align:center;
-        
-    }
-    .meme-container {
-        position:relative;
-        display:flex;
-        flex-direction:column;
-        align-content:center;
-        margin:60px;
-        width:400px;
-    }
     .img {
-        align-self:center;
         display:flex;
+        align-self:center;
         justify-content:space-between;
         border-radius:18px;
         height:auto;
@@ -68,7 +66,7 @@ background-color: rgb(0, 0, 0, .82);
         height:100px;
         align-items:flex-start;
         color: white;
-	    font-size: 40px;
+	    font-size: 30px;
         text-shadow: -1px 1px 4px #000,
 	    		  2px 2px 4px #000,
 	    		  2px -2px 2px #000,
@@ -77,9 +75,10 @@ background-color: rgb(0, 0, 0, .82);
         position:absolute;
         bottom:0;
         right:50;
+        width:500px;
         text-align:center;
         color: white;
-	    font-size: 40px;
+	    font-size: 30px;
 	    text-shadow: 1px 1px 4px #000,
 	    			  2px 2px 4px #000,
 	    			  2px -2px 2px #000,
