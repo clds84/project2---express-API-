@@ -93,7 +93,10 @@
 </table>
 
 ---
+| Verb | Path |
+| --- | ----------|
 
+---
 ### WireFrames:
 ![project 2 wireframe](project2wireframe.png)
 ---
