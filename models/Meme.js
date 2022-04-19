@@ -27,3 +27,5 @@ const MemeSchema = new Schema(
 
 const Meme = model('Meme', MemeSchema)
 
+module.exports = Meme
+
