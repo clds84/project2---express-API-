@@ -1,9 +1,9 @@
 {% block content %}
-<div class="comment-container">
-    <div class="card mb-4 shadow">
-        <div class="card-body">
+<div class="">
+    <div class="">
+        <div class="">
             <p>{{ comment.note }}</p>
-            <div class="d-flex justify-content-between">
+            <div class="">
                 <small>author: {{ username }}</small>
                 {% if username == username %}
                     <form action="/comments/delete/{{ memes.id }}/{{ comment._id }}?_method=DELETE" method="POST">

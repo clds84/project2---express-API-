@@ -9,7 +9,7 @@
             align-items:center;
             margin:calc(var(--margin) * 2);
             padding:(--padding);
-            height:1300px;
+            height:1400px;
         }
         .edit-delete {
             display:flex;
@@ -52,6 +52,12 @@
                         2px 2px 4px #000,
                         2px -2px 2px #000,
                         -1px -1px 2px #000; }
+        .comments-container {
+            width:500px;
+            color:white;
+            margin:var(--margin);
+            padding:var(--padding);
+        }
     </style>
 </head>
 <body class="body">
@@ -59,7 +65,7 @@
         <div class="edit-delete">
             {% if memes.owner == userId %}
             <form action="/memes/mine/{{memes.id}}/edit" method="get">
-                <button id="meme-input-submit-edit" >Edit</button>
+                <button id=>Edit</button>
             </form>
             <form  action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
                 <input type="submit" value="Delete">
@@ -74,17 +80,17 @@
         </div>
         
 
-            <form class="meme-comment-form" action="/comments/{{memes.id}}" method="POST">
+            <form action="/comments/{{memes.id}}" method="POST">
             <fieldset>
-                <input id="meme-input-comment" type="text"  name="note" placeholder="enter comment here...">
+                <input type="text"  name="note" placeholder="enter comment here...">
             </fieldset>
-                <input id="meme-input-submit-comment" type="submit" class="btn btn-success" value="Add Comment">
+                <input type="submit" class="" value="Add Comment">
             </form>
         {% if memes.comments.length > 0%}
-            <div >
-                <div >
+            <div class="comments-container">
+                <div class="comment" >
                      {% for comment in memes.comments %}
-                        {% render '../comment.liquid', comment: comment, username: username, memes: memes %}
+                        {% render '../comment.liquid', username: username, comment: comment, memes: memes %}
                     {% endfor %}
                 </div>
             </div>
