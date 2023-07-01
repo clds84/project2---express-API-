@@ -37,7 +37,7 @@
         .topText { 
             position:absolute;
             top:0;
-            font-size:30px;
+            font-size:40px;
             text-align:center;
             color: white;
             text-shadow: -1px 1px 4px #000,
@@ -63,7 +63,7 @@
     <div class="info-container">
         {%for meme in memes %} 
         <div class="meme-container">
-            <a href="/memes/mine/{{meme.id}}"> 
+            <a href="/memes/mine/{{meme.id}}" class="link"> 
                 <img class="img" src="{{meme.image}}">
                 <p class="topText">{{meme.topText}}</p>
                 <p class="bottomText">{{meme.bottomText}}</p>
