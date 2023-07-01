@@ -17,13 +17,14 @@
 <style>
     :root {
         --grid-gap:20px;
+        --border-radius:20px;
     }
     .info-container {
         display:grid;
         grid-template-columns: repeat(2,1fr);
         grid-gap:var(--grid-gap);
         place-items:center;
-        margin:20px;
+        margin:40px;
     }
     .message {
         grid-column:1/-1;
@@ -32,9 +33,10 @@
         object-fit:cover;
         width:400px;
         height:400px;
+        border-radius:var(--border-radius);
     }
 </style>
-
+{% layout 'layout.liquid' %}
 <!-- here we start our block content -->
 {% block content %}
 <body class="body">
