@@ -1,5 +1,45 @@
 {% layout "layout.liquid" %}
 {% block content %}
+<head>
+    <style>
+        .create-meme-container {
+        display:flex;
+        height:300px;
+    }
+    .create-meme-form {
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        margin:30px;
+        color:white;
+    }
+    .meme-input:focus {
+        background-color:transparent;
+        outline-width: 0
+    }
+    #meme-input-submit {
+        width:70px;
+        height:35px;
+        color:white;
+        font-size:16px;
+        background:transparent;
+        box-shadow:.5px .5px .5px .5px whitesmoke;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+        margin:10px;
+    }
+    #meme-input-submit:hover {
+        width:70px;
+        height:35px;
+        color: rgb(0,0,0,.82);
+        font-size:16px;
+        background:white;
+        box-shadow:.5px .5px .5px .5px white;
+        border:1px solid rgb(255, 255, 255, .4);
+        border-radius:4px;
+    }
+    </style>
+</head>
 <body class="body">
     <div class="create-meme-container">
         <form class="create-meme-form" action="/memes" method="POST">
