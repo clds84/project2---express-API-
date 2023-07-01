@@ -5,13 +5,14 @@
     <style>
         .meme-edit-container {
             padding:var(--padding);
+            margin:var(--margin);
             height:2000px;
         }
         .meme-edit-form {
             display:flex;
             flex-direction:column;
             align-items:center;
-            margin:30px;
+           
         }
         #meme-input-submit-edit {
             width:70px;
@@ -36,7 +37,6 @@
         }
         #meme-input-topText-edit, #meme-input-bottomText-edit {
             width:400px;
-            margin:20px;
             color:white;
         }
         .meme-input {
@@ -45,6 +45,7 @@
             border:none;
             border-bottom:1px solid white;
             outline: none;
+            margin:10px;
             color:white;
         }
     </style>
@@ -54,7 +55,7 @@
         <form class="meme-edit-form" action="/memes/mine/{{meme.id}}?_method=PUT" method="POST">
             <input type="text" class="meme-input" id="meme-input-topText-edit" name="topText" value="{{meme.topText}}">
             <input type="text" class="meme-input" id="meme-input-bottomText-edit" name="bottomText" value="{{meme.bottomText}}">
-            <input type="submit"id="meme-input-submit-edit" value="save">
+            <input type="submit" class="meme-input" id="meme-input-submit-edit" value="save">
         </form>
     </div>
 </body>
