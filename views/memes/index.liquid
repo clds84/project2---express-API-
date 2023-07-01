@@ -76,8 +76,8 @@
     <div class="info-container">
         <h1 class="message">View all memes here including ones you've created! You can click on any meme to comment and additionally you can edit or delete yours!</h1>
         {% for meme in memes %}
-        <div class="meme-container">
-            <a href="/memes/mine/{{meme.id}}" class="link">
+            <div class="meme-container">
+                <a href="/memes/mine/{{meme.id}}" class="link">
                     <img class="img" src="{{meme.image}}">
                     <p class="topText">{{meme.topText}}</p>
                     <p class="bottomText">{{meme.bottomText}}</p>
