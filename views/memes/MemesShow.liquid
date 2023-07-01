@@ -52,12 +52,7 @@
                         2px 2px 4px #000,
                         2px -2px 2px #000,
                         -1px -1px 2px #000; }
-        .comments-container {
-            width:500px;
-            color:white;
-            margin:var(--margin);
-            padding:var(--padding);
-        }
+       
     </style>
 </head>
 <body class="body">
@@ -87,13 +82,12 @@
                 <input type="submit" class="" value="Add Comment">
             </form>
         {% if memes.comments.length > 0%}
-            <div class="comments-container">
-                <div class="comment" >
+                <div class="comments-container">
+
                      {% for comment in memes.comments %}
                         {% render '../comment.liquid', username: username, comment: comment, memes: memes %}
                     {% endfor %}
                 </div>
-            </div>
         {% endif %}
     <div>
 </body>
