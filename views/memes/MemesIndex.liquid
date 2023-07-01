@@ -57,10 +57,10 @@
     </style>
 </head>
 <body class="body">
-    <h1 class="message">Click on a meme to edit, delete or comment!<br/>
-        If you don't see any, start creating!
-    </h1>
     <div class="info-container">
+        <h1 class="message">Click on a meme to edit, delete or comment!<br/>
+            If you don't see any, start creating!
+        </h1>
         {%for meme in memes %} 
         <div class="meme-container">
             <a href="/memes/mine/{{meme.id}}" class="link"> 

@@ -74,7 +74,7 @@
 {% block content %}
 <body class="body">
     <div class="info-container">
-        <h1 class="message">View all memes here including ones you've created! You can click on any meme to comment and edit or delete the ones you create!</h1>
+        <h1 class="message"> View all memes here! Click on any meme to comment and you can also edit or delete your own! </h1>
         {% for meme in memes %}
             <div class="meme-container">
                 <a href="/memes/mine/{{meme.id}}" class="link">
