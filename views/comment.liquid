@@ -4,36 +4,29 @@
     <style>
          .comments-container {
             width:700px;
-            margin:var(--margin);
-            padding:var(--padding);
         }
         .comment-container {
             background:white;
-            margin:var(--margin);
+            margin-bottom :var(--margin);
             padding:calc(var(--padding) * .6);
             border-radius:var(--border-radius);
         }
         .author-deleteButton {
             display:flex;
-            justify-content:space-between;
-            
+            justify-content:space-between; 
         }
         .comment {
             padding-left:calc(var(--padding) * .5);
             margin-top:20px;
-            
-        }
-        #meme-input-submit {
-            
         }
         .author {
-            
+            font-style: italic;
         }
     </style>
 </head>
             <div class="comment-container">
                 <div class="author-deleteButton">
-                    <small class="author">author: {{ username }}</small>
+                    <small class="author">{{ username }} says:</small>
                     {% if username == username %}
                         <form action="/comments/delete/{{ memes.id }}/{{ comment._id }}?_method=DELETE" method="POST">
                             <input id="meme-input-submit" type="submit" value="X">

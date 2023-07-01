@@ -9,7 +9,7 @@
             align-items:center;
             margin:calc(var(--margin) * 2);
             padding:(--padding);
-            height:1400px;
+            height:auto;
         }
         .edit-delete {
             display:flex;
@@ -52,6 +52,20 @@
                         2px 2px 4px #000,
                         2px -2px 2px #000,
                         -1px -1px 2px #000; }
+        .comments-form {
+            margin:100px 0;
+            width: 700px;
+        }
+        ::placeholder {
+           color:rgba(0,0,0,.3)
+        }
+        .post-comment {
+            float:right;
+            margin:calc(var(--margin) * .5);
+        }
+        .type-comment {
+            width:100%;
+        }
        
     </style>
 </head>
@@ -73,21 +87,18 @@
             <p class="topText">{{memes.topText}}</p>
             <p class="bottomText">{{memes.bottomText}}</p>
         </div>
-        
-
-            <form action="/comments/{{memes.id}}" method="POST">
+             <form class="comments-form" action="/comments/{{memes.id}}" method="POST">
             <fieldset>
-                <input type="text"  name="note" placeholder="enter comment here...">
+                <input type="text"  class="type-comment" name="note" placeholder="enter comment here...">
             </fieldset>
-                <input type="submit" class="" value="Add Comment">
+                <input type="submit" class="post-comment" value="Post">
             </form>
         {% if memes.comments.length > 0%}
-                <div class="comments-container">
-
-                     {% for comment in memes.comments %}
-                        {% render '../comment.liquid', username: username, comment: comment, memes: memes %}
-                    {% endfor %}
-                </div>
+            <div class="comments-container">
+                {% for comment in memes.comments %}
+                    {% render '../comment.liquid', username: username, comment: comment, memes: memes %}
+                {% endfor %}
+            </div>
         {% endif %}
     <div>
 </body>
