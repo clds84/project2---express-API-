@@ -1,10 +1,19 @@
-
-{% layout "indexLayout.liquid" %}
+{% layout "layout.liquid" %}
 {% block content %}
+<head>
+<style>
+    .message-searchInput-container {
+        width:1000px;
+        text-align:center;
+        margin: var(--margin);
+        color:white;
+    }
+</style>
+</head>
+
 <body class="body">
-    <div class="message-seachInput-container">
-        <h1 class="message">Welcome! Search memes for inspiration or create your own!</h1> 
-        <h1 class="message"> Please sign in or sign up first if you don't have an account</h1>
+    <div class="message-searchInput-container">
+        <h1 class="message">Welcome! Search memes for inspiration or create your own! Please sign in or sign up first if you don't have an account</h1> 
     </div>
 </body>
 {% endblock %}
