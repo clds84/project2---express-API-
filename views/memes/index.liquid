@@ -18,21 +18,26 @@
     :root {
         --grid-gap:20px;
         --border-radius:20px;
+        --margin:50px;
+        --padding:50px;
     }
     .info-container {
         display:grid;
         grid-template-columns: repeat(2,1fr);
         grid-gap:var(--grid-gap);
         place-items:center;
-        margin:40px;
+        margin:var(--margin);
     }
     .message {
         grid-column:1/-1;
+        height:100%;
+        padding:var(--padding);
     }
     .meme-container {
         position:relative;
         width:400px;
         height:400px;
+        margin:calc(var(--margin) * .5)
         
     }
     .link {
