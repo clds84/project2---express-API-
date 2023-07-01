@@ -15,12 +15,7 @@
     <script src="/app.js" defer></script>
 </head>
 <style>
-    :root {
-        --grid-gap:20px;
-        --border-radius:20px;
-        --margin:50px;
-        --padding:50px;
-    }
+
     .info-container {
         display:grid;
         grid-template-columns: repeat(2,1fr);
@@ -32,13 +27,14 @@
         grid-column:1/-1;
         height:100%;
         padding:var(--padding);
+        text-align:center;
+        color:white;
     }
     .meme-container {
         position:relative;
         width:400px;
         height:400px;
-        margin:calc(var(--margin) * .5)
-        
+        margin:calc(var(--margin) * .5) 
     }
     .link {
       display:flex;

@@ -1,7 +1,60 @@
 {% layout "layout.liquid" %}
 {% block content %}
 <head>
-    <style></style>
+    <style>
+        .info-container {
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap:var(--grid-gap);
+            place-items:center;
+            margin:var(--margin);
+        }
+        .message {
+            grid-column:1/-1;
+            height:100%;
+            padding:var(--padding);
+            text-align:center;
+            color:white;
+        }
+        .meme-container {
+            position:relative;
+            width:400px;
+            height:400px;
+            margin:calc(var(--margin) * .5) 
+        }
+        .link {
+            display:flex;
+            justify-content:center;
+            width:100%;
+            height:100%;
+        }
+        .img {
+            object-fit:cover;
+            width:100%;
+            height:100%;
+            border-radius:var(--border-radius);
+        }
+        .topText { 
+            position:absolute;
+            top:0;
+            font-size:30px;
+            text-align:center;
+            color: white;
+            text-shadow: -1px 1px 4px #000,
+                    2px 2px 4px #000,
+                    2px -2px 2px #000,
+                    -1px -1px 2px #000; }
+        .bottomText {
+            position:absolute;
+            bottom:0;
+            color: white;
+            font-size:30px;
+            text-align:center;
+            text-shadow: 1px 1px 4px #000,
+                        2px 2px 4px #000,
+                        2px -2px 2px #000,
+                        -1px -1px 2px #000; }
+    </style>
 </head>
 <body class="body">
     <h1 class="message">Click on a meme to edit, delete or comment!<br/>
@@ -9,11 +62,14 @@
     </h1>
     <div class="info-container">
         {%for meme in memes %} 
-            <a href="/memes/mine/{{meme.id}}"> <div class="meme-container"><img class="img" src="{{meme.image}}"></a> 
+        <div class="meme-container">
+            <a href="/memes/mine/{{meme.id}}"> 
+                <img class="img" src="{{meme.image}}">
                 <p class="topText">{{meme.topText}}</p>
                 <p class="bottomText">{{meme.bottomText}}</p>
-            </div>
-         {% endfor %}
+            </a> 
+        </div>
+        {% endfor %}
     </div>
 </body>
     {% endblock %}
