@@ -5,17 +5,16 @@
         .info-container {
             display:flex;
             flex-direction:column;
-            justify-content:space-evenly;
+            justify-content:flex-start;
             align-items:center;
             padding:var(--padding);
-            height:2500px;
+            height:1200px;
         }
         .edit-delete {
-            height:200px;
             display:flex;
             justify-content:space-between;
             width:200px;
-            margin-bottom:calc(var(--margin) * -1);
+            margin:var(--margin);
         }
         .meme-container {
             display:flex;
@@ -24,6 +23,7 @@
             position:relative;
             width:600px;
             height:600px;
+            
         }
         .img {
             object-fit:cover;
@@ -52,7 +52,8 @@
                         2px -2px 2px #000,
                         -1px -1px 2px #000; }
         .comments-form {
-            width: 700px;
+            width: 700px; 
+            margin:var(--margin)   
         }
         ::placeholder {
            color:rgba(0,0,0,.3)
@@ -69,28 +70,32 @@
 </head>
 <body class="body">
     <div class="info-container">
-        <div class="edit-delete">
+        
             {% if memes.owner == userId %}
+            <div class="edit-delete">
             <form action="/memes/mine/{{memes.id}}/edit" method="get">
                 <button id=>Edit</button>
             </form>
             <form  action="/memes/mine/{{memes.id}}/delete?_method=DELETE" method="POST">
                 <input type="submit" value="Delete">
             </form>
+            </div>
             {% endif %}
-        </div>
+        
 
         <div class="meme-container">
             <img class="img" src="{{memes.image}}">
             <p class="topText">{{memes.topText}}</p>
             <p class="bottomText">{{memes.bottomText}}</p>
         </div>
+        
              <form class="comments-form" action="/comments/{{memes.id}}" method="POST">
             <fieldset>
                 <input type="text"  class="type-comment" name="note" placeholder="enter comment here...">
             </fieldset>
                 <input type="submit" class="post-comment" value="Post">
             </form>
+        
         {% if memes.comments.length > 0%}
             <div class="comments-container">
                 {% for comment in memes.comments %}
