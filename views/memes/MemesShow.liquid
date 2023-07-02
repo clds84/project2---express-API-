@@ -22,8 +22,7 @@
             align-items:center;
             position:relative;
             width:600px;
-            height:600px;
-            
+            height:600px;     
         }
         .img {
             object-fit:cover;
@@ -65,12 +64,10 @@
         .type-comment {
             width:100%;
         }
-       
     </style>
 </head>
 <body class="body">
     <div class="info-container">
-        
             {% if memes.owner == userId %}
             <div class="edit-delete">
             <form action="/memes/mine/{{memes.id}}/edit" method="get">
@@ -81,14 +78,11 @@
             </form>
             </div>
             {% endif %}
-        
-
         <div class="meme-container">
             <img class="img" src="{{memes.image}}">
             <p class="topText">{{memes.topText}}</p>
             <p class="bottomText">{{memes.bottomText}}</p>
         </div>
-        
              <form class="comments-form" action="/comments/{{memes.id}}" method="POST">
             <fieldset>
                 <input type="text"  class="type-comment" name="note" placeholder="enter comment here...">
