@@ -1,62 +1,12 @@
-
 {% layout 'layout.liquid' %} 
 {% block content %}
-<head>
-    <style>
-        .meme-edit-container {
-            padding:var(--padding);
-            margin:var(--margin);
-            height:2000px;
-        }
-        .meme-edit-form {
-            display:flex;
-            flex-direction:column;
-            align-items:center;
-           
-        }
-        #meme-input-submit-edit {
-            width:70px;
-            height:35px;
-            color:white;
-            font-size:16px;
-            background:transparent;
-            box-shadow:.5px .5px .5px .5px whitesmoke;
-            border:1px solid rgb(255, 255, 255, .4);
-            border-radius:4px;
-            
-        }
-        #meme-input-submit-edit:hover {
-            width:70px;
-            height:35px;
-            color: rgb(0,0,0,.82);
-            font-size:16px;
-            background:white;
-            box-shadow:.5px .5px .5px .5px white;
-            border:1px solid rgb(255, 255, 255, .4);
-            border-radius:4px;
-        }
-        #meme-input-topText-edit, #meme-input-bottomText-edit {
-            width:400px;
-            color:white;
-        }
-        .meme-input {
-            width: 700px;
-            background-color:transparent;
-            border:none;
-            border-bottom:1px solid white;
-            outline: none;
-            margin:10px;
-            color:white;
-        }
-    </style>
-</head>
 <body class="body">
-    <div class="meme-edit-container">
-        <form class="meme-edit-form" action="/memes/mine/{{meme.id}}?_method=PUT" method="POST">
+    <div class="create-edit-container">
+        <form class="form-all" action="/memes/mine/{{meme.id}}?_method=PUT" method="POST">
             <input type="text" class="meme-input" id="meme-input-topText-edit" name="topText" value="{{meme.topText}}">
             <input type="text" class="meme-input" id="meme-input-bottomText-edit" name="bottomText" value="{{meme.bottomText}}">
-            <input type="submit" class="meme-input" id="meme-input-submit-edit" value="save">
+            <input type="submit" class="button" id="meme-input-submit-edit" value="save">
         </form>
     </div>
 </body>
-    {% endblock %}
+{% endblock %}
