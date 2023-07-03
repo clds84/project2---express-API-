@@ -1,14 +1,19 @@
-{% layout "auth/signUpSignInLayout.liquid" %}
+{% layout "layout.liquid" %}
 {% block content %}
+<head>
+    <style>
+        #login-signup-message {
+            margin-bottom:var(--margin);
+            text-align:center;
+        }
+    </style>
+</head>
 <body class="body">
 <div class="container-login-signup">
-    <form class="meme-login-signup-submit-form" action="/auth/signup" method="POST">
-            <legend class="message">Sign Up Here!</legend>
-            <label class="form-label">Username: </label>
-            <input class="meme-input" id="meme-input-login-signup" type="text" name="username" placeholder="username" class="form-control" required></br>
-            <label class="form-label">Password:</label>
-            <input class="meme-input" id="meme-input-login-signup" type="password" name="password" placeholder="enter password" class="form-control" required>
-        <input class="meme-login-signup-submit" type="submit" value="Create Account" class="btn btn-success">
+    <form class="form-all" action="/auth/signup" method="POST">
+            <legend id="login-signup-message">Sign Up Here!</legend>
+            <input class="meme-input" id=“login-signup-input” type="text" name="username" placeholder="username" class="form-control" required>            <input class="meme-input" id=“login-signup-input” type="password" name="password" placeholder="enter password" class="form-control" required>
+        <input class="meme-login-signup-submit button" type="submit" value="Create Account">
     </form>
 </div>
 </body>
