@@ -1,0 +1,34 @@
+.comments-container {
+    width:700px;
+    color:black;
+}
+.comment-container {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows: 2fr;
+    word-wrap: break-word;
+    background:rgba(255,255,255,1);
+    margin-bottom :var(--margin);
+    padding:calc(var(--padding) * .6);
+    border-radius:var(--border-radius);
+}
+.comment {
+    padding-left:calc(var(--padding) * .5);
+    margin-top:20px;
+    grid-column:1/-1;
+}
+.author {
+    font-style: italic;
+}
+.delete-comment {
+   grid-column:2;
+   justify-self:end;
+   background:rgb(0,0,0,.5);
+   color:white;
+   border-radius:4px;
+   font-size:16px;
+   transform: translate(var(--_x,0),var(--_y,0)) scale(var(--_t,1));
+}
+.delete-comment:hover {
+   --_t:1.05;
+}
