@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const Meme = require('../models/Meme')
-
+const CommentSchema = require('../models/comment')
 
 const router = express.Router()
 
@@ -36,4 +36,29 @@ router.post('/:id', (req, res) => {
         })
 })
 
+//////////////
+//EDIT PUT route - for editing user meme-specficic show route
+        //////////////
+        router.put('/:id/:commentId', (req,res) => {
+            const memeBody = req.body
+            const memeId = req.params.id 
+            const commentId = req.params.commentId  
+             Meme.findByIdAndUpdate(memeId, {
+                '$pull': {
+                    'comments' : { '_id': commentId}
+                },
+            })
+            .then((meme) => {
+                console.log('this is meme', meme)
+                const { username, userId, loggedIn } = req.session
+                res.redirect(`/memes/mine/${memeId}`)
+                console.log('this is meme after update',meme)
+            })
+            .catch((error) => {
+                console.log(error)
+                res.json({error})
+                res.send('hi')
+            })
+        })
+        
 module.exports = router
