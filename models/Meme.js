@@ -18,6 +18,7 @@ const MemeSchema = new Schema(
 		name: { type: String, required: false},
 		rank: {type: Number, required: false},
 		tags: {type: String, required: false},
+		date: {type: Date, required: false},
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
@@ -28,4 +29,3 @@ const MemeSchema = new Schema(
 const Meme = model('Meme', MemeSchema)
 
 module.exports = Meme
-

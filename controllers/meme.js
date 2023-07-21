@@ -69,6 +69,7 @@ router.get('/mine/:id', (req,res) => {
     //req.body.owner = req.session.userId
    // let ID = memeBody.ID
    Meme.findById(memeId)
+   .populate('comments.author')
    .then((memes) => {
         const { username, userId, loggedIn } = req.session
         

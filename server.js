@@ -35,6 +35,8 @@ app.use('/comments', commentRouter)
  			res.render('index.liquid', {loggedIn, username, userId })
 	
 })
+//api died but keeping this for reference//
+
 // app.get('/:memePage', (req, res) => {
 // 	const { username, userId, loggedIn } = req.session
 // 	const page = parseInt(req.params.memePage)
@@ -70,11 +72,10 @@ app.all('*', (req, res) => {
 	res.redirect('/error')
 })
 
-
-
 //////////////////////////////
 //      App Listener        //
 //////////////////////////////
+
 app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`)
 })

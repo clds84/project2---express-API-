@@ -10,13 +10,18 @@ const mongoose = require('./connection')
 const commentSchema = new mongoose.Schema({
     note: {
         type: String,
-        required: true
+        required: false
     },
     author: {
         type: mongoose.Schema.Types.ObjectID,
         ref: 'User',
         required: true
-    }
+    },
+    date: {type: String, required: false},
+    username: { 
+        type: String, 
+        required: false
+    },
 }, {
     timestamps: true
 })

@@ -19,14 +19,14 @@
             </div>
             <form class="form-all" action="/comments/{{memes.id}}" method="POST">
                 <fieldset>
-                    <textarea class="meme-input meme-comment-input" name="message" placeholder="enter comment here..." rows="5" col="20"></textarea>
+                    <textarea class="meme-input meme-comment-input" name="note" placeholder="enter comment here..." rows="5" col="20"></textarea>
                 </fieldset>
                     <input type="submit" class="button" value="Post">
             </form>
         {% if memes.comments.length > 0%}
             <div class="comments-container">
                 {% for comment in memes.comments %}
-                    {% render '../comment.liquid', username: username, comment: comment, memes: memes %}
+                    {% render '../comment.liquid', username: username, loggedIn: loggedIn, userId: userId, comment: comment, memes: memes %}
                 {% endfor %}
             </div>
         {% endif %}
