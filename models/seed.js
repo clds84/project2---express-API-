@@ -45,10 +45,6 @@ db.on('open', () => {
 			bottomText: 'is modern day Shakespeare', 
 			topText: 'Trailer Park Boys' 
 		},
-		{ 	image: "https://i.imgur.com/FiNm6LG.jpg", 
-			bottomText: `Honey I'm home`, 
-			topText: '' 
-		},
 		{ 	image: "https://i.imgur.com/ufCyq68.jpg", 
 			bottomText: `I thought this was the address to Pasquale's`, 
 			topText: '' 
