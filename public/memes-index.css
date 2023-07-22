@@ -3,7 +3,7 @@
         grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
         grid-gap:var(--grid-gap);
         place-items:center;
-        margin:0 auto;
+        margin:40px auto;
     }
     .message {
         grid-column:1/-1;
@@ -17,7 +17,7 @@
         height:400px;
         margin:calc(var(--margin) * .5);
     }
-    .link {
+    .link, .link:hover, .link:focus, .link:visited {
       display:flex;
       justify-content:center;
       width:100%;
@@ -48,11 +48,8 @@
 	    			  2px 2px 4px #000,
 	    			  2px -2px 2px #000,
 	    			  -1px -1px 2px #000; }
-    .topText:focus {
-        color:white;
-    }
 
-@media (max-width:375px) {
+@media (max-width:425px) {
     .topText {
         font-size:14px;
     }
