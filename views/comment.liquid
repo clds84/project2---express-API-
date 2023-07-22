@@ -1,7 +1,7 @@
 {% block content %} 
 <div class="comment-container">
   <!-- {% if username == username %}-->
-        <small>{{comment.date}}</small></br>
+        <small class="date">{{comment.date}}</small></br>
         <small class="author"> {{comment.author.username}} says:</small>
         {% if comment.author == userId %}
         <form class="delete-comment" action="/comments/{{ memes.id }}/{{comment.id}}?_method=PUT" method="POST">

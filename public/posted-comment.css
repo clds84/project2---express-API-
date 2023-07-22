@@ -19,9 +19,15 @@
 }
 .author {
     font-style: italic;
+    grid-column:1;
+    grid-row:2;
+}
+.date {
+    width:max-content;
 }
 .delete-comment {
    grid-column:2;
+   grid-row:1;
    justify-self:end;
    background:rgb(0,0,0,.5);
    color:white;
@@ -31,4 +37,10 @@
 }
 .delete-comment:hover {
    --_t:1.05;
+}
+
+@media (max-width: 800px) {
+    .comments-container {
+        width:100%;
+    }
 }

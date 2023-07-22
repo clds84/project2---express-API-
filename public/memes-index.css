@@ -1,6 +1,6 @@
     .info-container-grid {
         display:grid;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
         grid-gap:var(--grid-gap);
         place-items:center;
         margin:var(--margin);
@@ -16,7 +16,6 @@
         width:400px;
         height:400px;
         margin:calc(var(--margin) * .5);
-        
     }
     .link {
       display:flex;
@@ -49,3 +48,17 @@
 	    			  2px 2px 4px #000,
 	    			  2px -2px 2px #000,
 	    			  -1px -1px 2px #000; }
+
+@media (max-width:375px) {
+    .topText {
+        font-size:14px;
+    }
+    .meme-container-index {
+        width:275px;
+        height:275px;
+    }
+    .message {
+        font-size: 18px;
+        margin:0px 50px;
+    }
+}
