@@ -100,7 +100,7 @@
     }
     
 }
-@media (max-width: 400px) {
+@media (max-width: 425px) {
     .info-container-flex {
         width:400px;
         margin:0 auto;
