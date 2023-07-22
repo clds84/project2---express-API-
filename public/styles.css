@@ -53,4 +53,12 @@
     padding:var(--padding);
     margin:var(--margin);
     color:white;
+    width:800px;
+    margin:0 auto;
 } 
+
+@media (max-width:400px) {
+    
+ 
+    
+}

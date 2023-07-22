@@ -1,5 +1,37 @@
 {% layout 'layout.liquid' %} 
 {% block content %}
+<head>
+<style>
+    @media (max-width:800px) {
+    .meme-input {
+        width:600px;
+        font-size:20px;
+    }
+    #imgur {
+        font-size:18px;
+    }
+}
+@media (max-width:600px) {
+    .meme-input {
+        font-size:24px;
+    }
+    .button {
+        font-size:22px;
+    }
+}
+@media (max-width:400px) {
+    .meme-input {
+        font-size:30px;
+    }
+    .button {
+        font-size:30px;
+    }
+    #imgur {
+        font-size:28px;
+    }
+}
+</style>
+<head>
 <body class="body">
     <div class="create-edit-container">
         <form class="form-all" action="/memes/mine/{{meme.id}}?_method=PUT" method="POST">

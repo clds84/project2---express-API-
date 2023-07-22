@@ -2,14 +2,36 @@
 {% block content %}
 <head>
     <style>
+        .welcome-div {
+            margin:var(--margin)
+        }
         .welcome-message {
-            width:1000px;
-            margin:calc(var(--margin)* 2);
+            margin:0 auto;
             text-align:center;
+            font-size:26px;
+        }
+        @media (max-width:800px){
+            .welcome-message{
+                font-size:20px;
+            }
+        }
+        @media (max-width:600px){
+            .welcome-message{
+                font-size:18px;
+                width:400px;
+            }
+        }
+        @media (max-width:400px){
+            .welcome-message{
+                font-size:16px;
+                width:300px;
+            }
         }
     </style>
 </head>
 <body class="body">
+    <div class="welcome-div">
         <h1 class="welcome-message">Welcome! Search memes for inspiration or create your own! Please sign in or sign up first if you don't have an account</h1> 
+    </div>
 </body>
 {% endblock %}

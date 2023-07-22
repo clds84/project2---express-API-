@@ -3,7 +3,7 @@
         grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
         grid-gap:var(--grid-gap);
         place-items:center;
-        margin:var(--margin);
+        margin:0 auto;
     }
     .message {
         grid-column:1/-1;
