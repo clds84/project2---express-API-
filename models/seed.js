@@ -17,17 +17,9 @@ db.on('open', () => {
 			bottomText: '', 
 			topText: `I don't understand` 
 		},
-		{ 	image: "https://i.imgur.com/s4UjXJr.png", 
-			bottomText: 'I can have a decent computer', 
-			topText: `maybe now that I'm king`
-		},
 		{ 	image: "https://i.imgur.com/dQilOyJ.png", 
 			bottomText: 'is not easy', 
 			topText: 'being a 1900s steel conglomerate tycoon' 
-		},
-		{ 	image: "https://i.imgur.com/ekiP0wy.png", 
-			bottomText: '', 
-			topText: `..P....O..G....G..E..R..S` 
 		},
 		{ 	image: "https://i.imgur.com/fwwtY7H.png", 
 			bottomText: '', 
@@ -36,10 +28,6 @@ db.on('open', () => {
 		{ 	image: "https://i.imgur.com/ke8dB0Y.png", 
 			bottomText: 'Uncle Timm looking at our indentation', 
 			topText: '' 
-		},
-		{ 	image: "https://i.imgur.com/8wTWczx.jpg", 
-			bottomText: `'Yeah sorry my video is messed up'`, 
-			topText: 'Zoom Meeting' 
 		},
 		{ 	image: "https://i.imgur.com/cUj7KNS.png", 
 			bottomText: 'is modern day Shakespeare', 
