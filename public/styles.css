@@ -11,9 +11,6 @@
     background-color: rgb(0, 0, 0, .82);
     color:white;
 }
-a,a:hover,a:focus,a:visited {
-    color:white;
-}
 .button {
     background:transparent;
     color:white;

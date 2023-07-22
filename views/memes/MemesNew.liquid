@@ -5,40 +5,52 @@
         #imgur {
             margin-top:var(--margin);
             font-size:16px;
+            text-align:center;
         }
-@media (max-width:800px) {
+        @media (max-width:800px) {
+            .create-edit-container{
+        width:400px;
+    }
     .meme-input {
         width:600px;
         font-size:20px;
     }
     #imgur {
-        font-size:18px;
+        width:400px;
+    }
+    ::placeholder {
+        font-size: 18px;
     }
 }
-@media (max-width:600px) {
+/* @media (max-width:600px) {
     .meme-input {
+        width:400px;
         font-size:24px;
     }
     .button {
         font-size:22px;
     }
-}
+} */
 @media (max-width:425px) {
     .meme-input {
-        font-size:30px;
+        font-size:20px;
+        width:300px;
     }
     .button {
-        font-size:30px;
+        font-size:20px;
     }
     #imgur {
-        font-size:28px;
+        font-size:18px;
+        width:300px;
     }
+   
+  
 }
     </style>
 </head>
 <body class="body">
     <div class="create-edit-container">
-        <form class="form-all" action="/memes" method="POST">
+        <form class="form-all" id="new-form" action="/memes" method="POST">
             <input class="meme-input meme-create-input"id="meme-input-bottomText" type="text" name="bottomText" placeholder="bottom text">
             <input class="meme-input meme-create-input" id="meme-input-topText" type="text" name="topText" placeholder="top text">
             <input class="meme-input meme-create-input" id="meme-input-image" type="text" name="image" placeholder="paste image url link, ex: 'https://imgflip.com/s/meme/Success-Kid.jpg'">
