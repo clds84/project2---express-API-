@@ -1,28 +1,28 @@
 {% layout "layout.liquid" %}
 {% block content %}
-<head>
+  <head>
     <style>
-        #imgur {
-            margin-top:var(--margin);
-            font-size:16px;
-            text-align:center;
+      #imgur {
+        margin-top: var(--margin);
+        font-size: 16px;
+        text-align: center;
+      }
+      @media(max-width:800px) {
+        .create-edit-container {
+          width: 400px;
         }
-        @media (max-width:800px) {
-            .create-edit-container{
-        width:400px;
-    }
-    .meme-input {
-        width:600px;
-        font-size:20px;
-    }
-    #imgur {
-        width:400px;
-    }
-    ::placeholder {
-        font-size: 18px;
-    }
-}
-/* @media (max-width:600px) {
+        .meme-input {
+          width: 600px;
+          font-size: 20px;
+        }
+        #imgur {
+          width: 400px;
+        }
+        ::placeholder {
+          font-size: 18px;
+        }
+      }
+      /* @media (max-width:600px) {
     .meme-input {
         width:400px;
         font-size:24px;
@@ -31,32 +31,66 @@
         font-size:22px;
     }
 } */
-@media (max-width:425px) {
-    .meme-input {
-        font-size:20px;
-        width:300px;
-    }
-    .button {
-        font-size:20px;
-    }
-    #imgur {
-        font-size:18px;
-        width:300px;
-    }
-   
-  
-}
+      @media(max-width:425px) {
+        .meme-input {
+          font-size: 20px;
+          width: 300px;
+        }
+        .button {
+          font-size: 20px;
+        }
+        #imgur {
+          font-size: 18px;
+          width: 300px;
+        }
+
+
+      }
     </style>
-</head>
-<body class="body">
+  </head>
+  <body class="body">
     <div class="create-edit-container">
-        <form class="form-all" id="new-form" action="/memes" method="POST">
-            <input class="meme-input meme-create-input"id="meme-input-bottomText" type="text" name="bottomText" placeholder="bottom text">
-            <input class="meme-input meme-create-input" id="meme-input-topText" type="text" name="topText" placeholder="top text">
-            <input class="meme-input meme-create-input" id="meme-input-image" type="text" name="image" placeholder="paste image url link, ex: 'https://imgflip.com/s/meme/Success-Kid.jpg'">
-            <input class="button" id="meme-input-submit" type="submit" value="Create">
-            <legend id="imgur">Need help pasting a link? Try using Imgur to upload an image, and use the sharing option titled "Direct Link": <a href="https://imgur.com/" target="_blank"><img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/n7gnwha4eq9ewjjtksrt" height= 40px width= 40px alt=""></a></p>
-        </form>
+      <form
+        class="form-all"
+        id="new-form"
+        action="/memes"
+        method="POST"
+        enctype="multipart/form-data">
+        <input
+          class="meme-input meme-create-input"
+          id="meme-input-bottomText"
+          type="text"
+          name="bottomText"
+          placeholder="bottom text">
+        <input
+          class="meme-input meme-create-input"
+          id="meme-input-topText"
+          type="text"
+          name="topText"
+          placeholder="top text">
+        <input
+          class="meme-input meme-create-input"
+          id="meme-input-image"
+          type="text"
+          name="image"
+          placeholder="paste image url link, ex: 'https://imgflip.com/s/meme/Success-Kid.jpg'">
+        <input
+          type="file"
+          name="file"
+          required>
+        <input
+          class="button"
+          id="meme-input-submit"
+          type="submit"
+          value="Create">
+        <legend id="imgur">Need help pasting a link? Try using Imgur to upload an image, and use the sharing option titled "Direct Link":
+          <a href="https://imgur.com/" target="_blank"><img
+              src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/n7gnwha4eq9ewjjtksrt"
+              height=40px
+              width=40px
+              alt=""></a>
+        </p>
+      </form>
     </div>
-</body>
+  </body>
 {% endblock %}
