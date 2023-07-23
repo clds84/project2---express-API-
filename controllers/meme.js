@@ -4,6 +4,12 @@ const Meme = require('../models/Meme')
 const fetch = require('node-fetch')
 const { model } = require('../models/connection')
 const { route } = require('./user')
+const upload = require('../upload');
+var buffer = require('buffer/').Buffer;
+var fs = require('fs')
+var path = require('path')
+// var multer = require('multer')
+
 
 
 // Create router
@@ -119,26 +125,31 @@ router.get('/new', (req,res) => {
 ///////////////
 //POST route - POST route for creating memes in /memes
 ///////////////
-router.post('/', (req,res) => {
+// upload.single('file'),
+router.post('/', upload.single('file'), (req,res) => {
     req.body.owner = req.session.userId
     //  Memes.find({owner: userId})
     //  	.then((meme) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
-         
-        let memeBody = req.body
-        //let topText = memeBody.topText
-        // let bottomText = memeBody.bottomText
-        // let image = memeBody.image
-        // let name = memeBody.name
-        //let ID = memeBody.ID
-        // let rank = memeBody.rank
-        // let tags = memeBody.tags
-        
-        Meme.create(memeBody)
+         let memeBody = req.body
+        Meme.create(memeBody, {})
         .then((memeBody) => {
+            memeBody = {
+            topText: memeBody.topText,
+            bottomText: memeBody.bottomText,
+            image: memeBody.image,
+            name: memeBody.name,
+            file: {data: fs.readFileSync(path.join(req.file.filename)),
+            contentType: 'image/png'},
+            ID: memeBody.ID,
+            rank: memeBody.rank,
+            tags: memeBody.tags,
+            }
+            memeBody.file.data = memeBody.file.data.toString('base64')
             console.log('this is req body ', memeBody)
-                res.redirect('/memes/mine')
+            console.log('this is the meme.file.data', memeBody.file.data)
+            res.redirect('/memes/mine')
                 //res.send('hi')
             })
     //})
