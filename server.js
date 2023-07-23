@@ -10,6 +10,7 @@ const UserRouter = require('./controllers/user')
 const memeRouter = require('./controllers/meme')
 const commentRouter = require('./controllers/comment')
 const User = require("./models/user")
+const upload = require('./upload');
 
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js
