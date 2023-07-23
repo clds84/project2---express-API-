@@ -8,9 +8,9 @@
         text-align: center;
       }
       @media(max-width:800px) {
-        .create-edit-container {
-          width: 400px;
-        }
+       #image-upload {
+      width:600px;
+       }
         .meme-input {
           width: 600px;
           font-size: 20px;
@@ -69,12 +69,7 @@
           name="topText"
           placeholder="top text">
         <input
-          class="meme-input meme-create-input"
-          id="meme-input-image"
-          type="text"
-          name="image"
-          placeholder="paste image url link, ex: 'https://imgflip.com/s/meme/Success-Kid.jpg'">
-        <input
+          id="image-upload"
           type="file"
           name="file"
           required>
@@ -83,12 +78,6 @@
           id="meme-input-submit"
           type="submit"
           value="Create">
-        <legend id="imgur">Need help pasting a link? Try using Imgur to upload an image, and use the sharing option titled "Direct Link":
-          <a href="https://imgur.com/" target="_blank"><img
-              src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/n7gnwha4eq9ewjjtksrt"
-              height=40px
-              width=40px
-              alt=""></a>
         </p>
       </form>
     </div>

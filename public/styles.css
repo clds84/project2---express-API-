@@ -42,12 +42,16 @@
    -webkit-transition-delay: 9999s;
    transition-delay: 9999s;
 }
+#image-upload {
+width:700px;
+}
 .form-all {
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    margin:calc(var(--margin) * 2);
+    margin:calc(var(--margin) * 2) auto;
+    width:100%;
 }
 .create-edit-container {
     padding:var(--padding);
