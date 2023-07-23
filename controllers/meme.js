@@ -133,23 +133,43 @@ router.post('/', upload.single('file'), (req,res) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
          let memeBody = req.body
-        Meme.create(memeBody)
-        .then((memeBody) => {
-            memeBody = {
-            topText: memeBody.topText,
+
+         console.log('this is req.file.buffer',req.file.buffer.toString('base64'))
+         memeBody = {
+             topText: memeBody.topText,
             bottomText: memeBody.bottomText,
             image: memeBody.image,
             name: memeBody.name,
-            file: {data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'},
             ID: memeBody.ID,
             rank: memeBody.rank,
             tags: memeBody.tags,
+            owner: memeBody.owner,
+             file: {data: req.file.buffer,contentType: 'image/png'}
             }
-            console.log('this is memebody.toptext', memeBody.topText)            
+            console.log('this is req.file', req.file)
+            console.log('this is the memeBody.file', memeBody.file)
+            console.log('this is meme.file.data', memeBody.file.data)
+            const image = req.file.buffer
+            const buff = new Buffer.from(image, 'base64');
+            console.log('this is buff', buff)
             memeBody.file.data = memeBody.file.data.toString('base64')
+            console.log('this is memeBody.file.data.toString()', memeBody.file.data.toString('base64'))
+            
+        Meme.create(memeBody)
+        .then((memeBody) => {
+            // memeBody = {
+            // topText: memeBody.topText,
+            // bottomText: memeBody.bottomText,
+            // image: memeBody.image,
+            // name: memeBody.name,
+            // file: memeBody.file.data,
+            // ID: memeBody.ID,
+            // rank: memeBody.rank,
+            // tags: memeBody.tags,
+            // }
+
+            // 
             console.log('this is req body ', memeBody)
-            console.log('this is the meme.file.data', memeBody.file.data)
             res.redirect('/memes/mine')
                 //res.send('hi')
             })

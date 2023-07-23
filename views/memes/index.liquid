@@ -1,17 +1,19 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<body class="body">
+  <body class="body">
     <div class="info-container-grid">
-        <h1 class="message"> View all memes here! Click on any meme to comment and you can also edit or delete your own! </h1>
-        {% for meme in memes %}
+      <h1 class="message">
+        View all memes here! Click on any meme to comment and you can also edit or delete your own!
+      </h1>
+      {% for meme in memes %}
         <div class="meme-container-index">
-            <a href="/memes/mine/{{meme.id}}" class="link">
-            <img class="img" src="{{meme.image}}">
-            <p class="topText">{{meme.topText}}</p>
-            <p class="bottomText">{{meme.bottomText}}</p>
-            </a>  
+          <a href="/memes/mine/{{meme.id}}" class="link">
+            <img class="img" src="data:image/png;base64,{{meme.file.data}}">
+            <p class="topText">{{ meme.topText }}</p>
+            <p class="bottomText">{{ meme.bottomText }}</p>
+          </a>
         </div>
-        {% endfor %}
+      {% endfor %}
     </div>
-</body>
+  </body>
 {% endblock %}

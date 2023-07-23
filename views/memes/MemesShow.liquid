@@ -13,7 +13,8 @@
             </div>
         {% endif %}
              <div class="meme-container-show">
-                <div class="image">{{memes.file}}</div>
+                
+                <img class="img" src="data:{{memes.file.contentType}};base64,{{memes.file.data}}">
                 <p class="topText">{{memes.topText}}</p>
                 <p class="bottomText">{{memes.bottomText}}</p>
             </div>
