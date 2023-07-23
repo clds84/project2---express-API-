@@ -133,19 +133,20 @@ router.post('/', upload.single('file'), (req,res) => {
         const username = req.session.username
         const loggedIn = req.session.loggedIn
          let memeBody = req.body
-        Meme.create(memeBody, {})
+        Meme.create(memeBody)
         .then((memeBody) => {
             memeBody = {
             topText: memeBody.topText,
             bottomText: memeBody.bottomText,
             image: memeBody.image,
             name: memeBody.name,
-            file: {data: fs.readFileSync(path.join(req.file.filename)),
+            file: {data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
             contentType: 'image/png'},
             ID: memeBody.ID,
             rank: memeBody.rank,
             tags: memeBody.tags,
             }
+            console.log('this is memebody.toptext', memeBody.topText)            
             memeBody.file.data = memeBody.file.data.toString('base64')
             console.log('this is req body ', memeBody)
             console.log('this is the meme.file.data', memeBody.file.data)
