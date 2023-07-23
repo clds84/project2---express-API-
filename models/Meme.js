@@ -15,6 +15,7 @@ const MemeSchema = new Schema(
 		bottomText: { type: String, required: false },
 		topText: {type: String, required: false},
         image: { type: String, required: false },
+		file:{ data: Buffer, contentType: String},
 		name: { type: String, required: false},
 		rank: {type: Number, required: false},
 		tags: {type: String, required: false},
@@ -25,6 +26,8 @@ const MemeSchema = new Schema(
 		},
 		comments: [commentSchema]
 		}, { timestamps: true })
+
+
 
 const Meme = model('Meme', MemeSchema)
 
