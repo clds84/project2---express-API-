@@ -14,7 +14,7 @@
         {% endif %}
              <div class="meme-container-show">
                 
-                <img class="img" src="data:{{memes.file.contentType}};base64,{{memes.file.data}}">
+                <img class="img" src="{{memes.cloudinary_img}}">
                 <p class="topText">{{memes.topText}}</p>
                 <p class="bottomText">{{memes.bottomText}}</p>
             </div>

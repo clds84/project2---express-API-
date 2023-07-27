@@ -6,7 +6,7 @@
       {% for meme in memes %}
         <div class="meme-container-index">
           <a href="/memes/mine/{{meme.id}}" class="link">
-            <img class="img" src="data:image/png;base64,{{meme.file.data}}">
+            <img class="img" src="{{meme.cloudinary_img}}">
             <!-- <div class="img">{{meme.file}}</div> -->
             <p class="topText">{{ meme.topText }}</p>
             <p class="bottomText">{{ meme.bottomText }}</p>

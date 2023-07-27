@@ -4,13 +4,11 @@ const Meme = require('../models/Meme')
 const fetch = require('node-fetch')
 const { model } = require('../models/connection')
 const { route } = require('./user')
-const upload = require('../upload');
-var buffer = require('buffer/').Buffer;
-var fs = require('fs')
 var path = require('path')
-// var multer = require('multer')
 
-
+////for cloudinary upload
+const cloudinary = require("../utils/cloudinary");
+const upload = require("../utils/multer");
 
 // Create router
 const router = express.Router()
@@ -36,8 +34,6 @@ router.use((req, res, next) => {
 //GET route- index that shows all memes
 //////////////
 router.get('/', (req,res) => {
-    
-   
     Meme.find({})    
         .then((memes) => {
             const username = req.session.username
@@ -115,6 +111,30 @@ router.put('/mine/:id', (req,res) => {
         res.send('hi')
     })
 })
+
+
+
+// //try {
+//     // Upload image to cloudinary
+//     router.post("/", upload.single("image"), async (req, res) => {
+//         try {
+//           // Upload image to cloudinary
+//           const result = await cloudinary.uploader.upload(req.file.path);
+//           // Create new user
+//           let meme = new Meme({
+//             meme_img: result.secure_url,
+//             cloudinary_id: result.public_id,
+//           });
+//           // save user details in mongodb
+//           await memeImage.save();
+//           res.status(200)
+//             .send({
+//               meme
+//             });
+//         } catch (err) {
+//           console.log(err);
+//         }
+//       });
 ///////////////
 //GET route - new route for creating memes
 ///////////////
@@ -126,75 +146,47 @@ router.get('/new', (req,res) => {
 //POST route - POST route for creating memes in /memes
 ///////////////
 // upload.single('file'),
-router.post('/', upload.single('file'), (req,res) => {
+router.post('/', upload.single('image'), async (req,res) => {
     req.body.owner = req.session.userId
-    //  Memes.find({owner: userId})
-    //  	.then((meme) => {
-        const username = req.session.username
-        const loggedIn = req.session.loggedIn
-         let memeBody = req.body
-
-         console.log('this is req.file.buffer',req.file.buffer.toString('base64'))
-         memeBody = {
-             topText: memeBody.topText,
-            bottomText: memeBody.bottomText,
-            image: memeBody.image,
-            name: memeBody.name,
-            ID: memeBody.ID,
-            rank: memeBody.rank,
-            tags: memeBody.tags,
-            owner: memeBody.owner,
-             file: {data: req.file.buffer,contentType: 'image/png'}
-            }
-            console.log('this is req.file', req.file)
-            console.log('this is the memeBody.file', memeBody.file)
-            console.log('this is meme.file.data', memeBody.file.data)
-            const image = req.file.buffer
-            const buff = new Buffer.from(image, 'base64');
-            console.log('this is buff', buff)
-            memeBody.file.data = memeBody.file.data.toString('base64')
-            console.log('this is memeBody.file.data.toString()', memeBody.file.data.toString('base64'))
-            
-        Meme.create(memeBody)
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    let memeBody = req.body
+    try {
+        // Upload image to cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path);
+        memeBody.cloudinary_id = result.public_id
+        memeBody.cloudinary_img = result.secure_url
+        } 
+    catch (err) {
+        console.log(err);
+    }
+    Meme.create(memeBody)
         .then((memeBody) => {
-            // memeBody = {
-            // topText: memeBody.topText,
-            // bottomText: memeBody.bottomText,
-            // image: memeBody.image,
-            // name: memeBody.name,
-            // file: memeBody.file.data,
-            // ID: memeBody.ID,
-            // rank: memeBody.rank,
-            // tags: memeBody.tags,
-            // }
-
-            // 
             console.log('this is req body ', memeBody)
             res.redirect('/memes/mine')
-                //res.send('hi')
-            })
-    //})
-    .catch((err) => {
+        })
+        .catch((err) => {
         console.log(err)
         res.json({ err })
-    })
+        })
 })
 ///////////////
 //DELETE route - for deleting user meme-specific show route
 ///////////////
-router.delete('/mine/:id/delete', (req,res) => {
+router.delete('/mine/:id/delete', async (req,res) => {
     const memeId = req.params.id
     console.log('delete route hit')
-    Meme.findByIdAndRemove(memeId)
-    .then((meme) => {
+    try {
+        let meme = await Meme.findByIdAndRemove(memeId);
+        await cloudinary.uploader.destroy(meme.cloudinary_id)
+
         console.log('we are inside delete promise chain')
         const { username, userId, loggedIn } = req.session
         res.redirect(`/memes/mine`)
-    })
-            .catch((error) => {
-                console.log(error)
-                res.json({error})
-            })
+    }
+    catch (err) {
+        console.log(err)
+    }
 })
 
 //Keeping this here in case an API is consumed in the future

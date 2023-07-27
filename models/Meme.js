@@ -15,11 +15,14 @@ const MemeSchema = new Schema(
 		bottomText: { type: String, required: false },
 		topText: {type: String, required: false},
         image: { type: String, required: false },
-		file:{ data: Buffer, contentType: String },
+		// file: {type: String,required: true},
 		name: { type: String, required: false},
 		rank: {type: Number, required: false},
 		tags: {type: String, required: false},
 		date: {type: Date, required: false},
+		cloudinary_img:{type: String, required: false},
+		cloudinary_id:{type: String, required: false},
+
 		owner: {
 			type: Schema.Types.ObjectID,
 			ref: 'User',
