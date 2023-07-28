@@ -1,87 +1,82 @@
 {% layout "layout.liquid" %}
 {% block content %}
-<head>
-  <style>
-    #imgur {
-      margin-top: var(--margin);
-      font-size: 16px;
-      text-align: center;
-    }
-    @media(max-width:800px) {
-      #image-upload {
-    width:600px;
-      }
-      .meme-input {
-        width: 600px;
-        font-size: 20px;
-      }
+  <head>
+    <style>
       #imgur {
-        width: 400px;
+        margin-top: var(--margin);
+        font-size: 16px;
+        text-align: center;
       }
-      ::placeholder {
-        font-size: 18px;
+      @media(max-width:800px) {
+        #image-upload {
+          width: 600px;
+        }
+        .meme-input {
+          width: 600px;
+          font-size: 20px;
+        }
+        #imgur {
+          width: 400px;
+        }
+        ::placeholder {
+          font-size: 18px;
+        }
       }
-    }
-    @media(max-width:425px) {
-      .create-edit-container {
-        width:350px;
-      }
-      #image-upload {
-        width:300px;
-      }
-      .meme-input {
-        font-size: 20px;
-        width: 300px;
-      }
-      .button {
-        font-size: 20px;
-      }
-      #imgur {
-        font-size: 18px;
-        width: 300px;
-      }
+      @media(max-width:425px) {
+        .create-edit-container {
+          width: 350px;
+        }
+        #image-upload {
+          width: 300px;
+        }
+        .meme-input {
+          font-size: 20px;
+          width: 300px;
+        }
+        .button {
+          font-size: 20px;
+        }
+        #imgur {
+          font-size: 18px;
+          width: 300px;
+        }
 
 
-    }
-  </style>
-</head>
-<body class="body">
-  <div class="create-edit-container">
-    <form
-      class="form-all"
-      id="new-form"
-      action="/memes"
-      method="POST"
-      enctype="multipart/form-data">
-      <input
-        class="meme-input meme-create-input"
-        id="meme-input-bottomText"
-        type="text"
-        name="bottomText"
-        placeholder="bottom text">
-      <input
-        class="meme-input meme-create-input"
-        id="meme-input-topText"
-        type="text"
-        name="topText"
-        placeholder="top text">
-      <input
-        id="image-upload"
-        type="file"
-        name="image"
-        required>
-      <input
-        class="button"
-        id="meme-input-submit"
-        type="submit"
-        value="Create">
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="create-edit-container">
+      <form
+        class="form-all"
+        id="new-form"
+        action="/memes"
+        method="POST"
+        enctype="multipart/form-data">
+        <input
+          class="meme-input meme-create-input"
+          id="meme-input-bottomText"
+          type="text"
+          name="bottomText"
+          placeholder="bottom text">
+        <input
+          class="meme-input meme-create-input"
+          id="meme-input-topText"
+          type="text"
+          name="topText"
+          placeholder="top text">
+        <input
+          id="image-upload"
+          type="file"
+          name="image"
+          required>
+        <input
+          class="button"
+          id="meme-input-submit"
+          type="submit"
+          value="Create">
       </p>
     </form>
-    <button id="upload_widget" class="cloudinary-button">upload file</button>
-  </div>
-</body>
-<script>
-  
-</script>
+  </body>
+  <script></script>
 {% endblock %}
-
